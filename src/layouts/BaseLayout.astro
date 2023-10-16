@@ -1,0 +1,24 @@
+---
+import "@fontsource-variable/nunito-sans";
+import "@fontsource-variable/noto-sans-mono";
+import { panda } from "../../styled-system/jsx";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <panda.body fontFamily="nunito">
+    <slot />
+  </panda.body>
+
+  <style>
+    html {
+      font-size: 18px;
+    }
+  </style>
+</html>

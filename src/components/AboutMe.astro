@@ -1,0 +1,33 @@
+---
+import { Flex, VStack, panda } from "../../styled-system/jsx";
+---
+
+<Flex
+  flexDirection={{ base: "column", md: "row" }}
+  gap={12}
+  paddingY={12}
+  marginTop={12}
+  borderTop="1px solid"
+>
+  <panda.div>
+    <panda.h3 fontFamily="noto-mono" fontSize="6xl">ABOUT ME</panda.h3>
+    <panda.div paddingTop={12} fontSize="3xl">
+      As a web developer with a passion for creative design and interactive web
+      experiences. I focus on crafting visually appealing, high-performance
+      websites that prioritize accessibility.
+    </panda.div>
+  </panda.div>
+  <panda.div
+    padding="10"
+    rounded="full"
+    border="1px solid"
+    borderColor="gray.300"
+  >
+    <panda.img
+      src="/images/rich-with-cam.jpg"
+      alt="Richard hapilly holding their first camera"
+      rounded="full"
+    />
+  </panda.div>
+  <panda.div />
+</Flex>
