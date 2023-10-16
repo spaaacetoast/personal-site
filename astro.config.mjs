@@ -4,5 +4,6 @@ import solid from "@astrojs/solid-js";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://spaaacetoast.github.io",
   integrations: [pandacss(), solid()],
 });
