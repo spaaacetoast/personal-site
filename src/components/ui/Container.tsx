@@ -1,5 +1,5 @@
 import { type ParentComponent } from "solid-js";
-import { Container as PandaContainer, panda } from "../../../styled-system/jsx";
+import { Container as PandaContainer, panda } from "styled-system/jsx";
 
 export const Container: ParentComponent = (props) => (
   <panda.div paddingX={{ base: 1.5, sm: 2, md: 2.5, lg: 3 }}>
