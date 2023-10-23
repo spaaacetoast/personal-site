@@ -1,15 +1,18 @@
 ---
-import Header from "@components/Header.astro";
+import { Header } from "@components/Header";
+import { SmoothScroll } from "@components/SmoothScroll";
 import AboutMe from "@components/homepage/AboutMe.astro";
-import { Hero } from "@components/homepage/Hero";
+import { Hero } from "@components/homepage/Hero2";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { Container } from "styled-system/jsx";
 ---
 
 <BaseLayout>
-  <Header />
+  <Header client:load />
   <Hero client:load />
   <Container>
     <AboutMe />
   </Container>
 </BaseLayout>
+
+<SmoothScroll client:only="solid-js" />
