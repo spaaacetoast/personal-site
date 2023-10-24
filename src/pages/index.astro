@@ -1,15 +1,20 @@
 ---
-import AboutMe from "../components/AboutMe.astro";
-import Header from "../components/Header.astro";
-import { Hero } from "../components/Hero2";
-import { Container } from "../components/ui/Container";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { Footer } from "@components/Footer";
+import { Header } from "@components/Header";
+import { SmoothScroll } from "@components/SmoothScroll";
+import AboutMe from "@components/homepage/AboutMe.astro";
+import { Hero } from "@components/homepage/Hero2";
+import { Container } from "@components/ui/Container";
+import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
-  <Header />
-  <Hero client:load />
+  <Header client:load />
   <Container>
+    <Hero client:load />
     <AboutMe />
   </Container>
+  <Footer client:idle />
 </BaseLayout>
+
+<SmoothScroll client:only="solid-js" />

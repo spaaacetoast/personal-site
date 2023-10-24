@@ -14,6 +14,7 @@
     "@astrojs/solid-js": "^3.0.1",
     "@fontsource-variable/noto-sans-mono": "^5.0.13",
     "@fontsource-variable/nunito-sans": "^5.0.9",
+    "@studio-freight/lenis": "^1.0.27",
     "astro": "^3.1.4",
     "motion": "^10.16.4",
     "solid-js": "^1.4.3"

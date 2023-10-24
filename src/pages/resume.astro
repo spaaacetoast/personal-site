@@ -1,7 +1,7 @@
 ---
-import { Flex, VStack, panda } from "../../styled-system/jsx";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import richWithCam from "../assets/images/rich-with-cam.jpg";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { VStack, panda, Flex } from "styled-system/jsx";
+import richWithCam from "@assets/images/rich-with-cam.jpg";
 ---
 
 <BaseLayout>
@@ -54,6 +54,11 @@ import richWithCam from "../assets/images/rich-with-cam.jpg";
               Me <panda.small>(they/them)</panda.small>
             </panda.h2>
 
+            <panda.h3 marginTop="2" fontWeight="semibold">
+              Personal Site
+            </panda.h3>
+            <a href="https://obscure.software">obscure.software</a>
+
             <panda.h3 marginTop="2" fontWeight="semibold">Phone</panda.h3>
             <a href="tel:+31637327422">+31 6 37327422</a>
 
@@ -68,12 +73,9 @@ import richWithCam from "../assets/images/rich-with-cam.jpg";
             <panda.h3 marginTop="2" fontWeight="semibold">Languages</panda.h3>
             <p>Dutch, English</p>
 
-            <panda.h3 marginTop="2" fontWeight="semibold">Socials</panda.h3>
+            <panda.h3 marginTop="2" fontWeight="semibold">Find me on</panda.h3>
             <a href="https://linkedin.com/in/richard-boomsma">
               linkedin.com/in/richard-boomsma
-            </a>
-            <a href="https://www.instagram.com/spaaacetoast/">
-              instagram.com/spaaacetoast
             </a>
           </panda.div>
 
@@ -89,9 +91,9 @@ import richWithCam from "../assets/images/rich-with-cam.jpg";
             </panda.h2>
 
             <panda.p marginTop="2">
-              <b>Frontend</b> JavaScript, TypeScript, SolidJS, React, React Native,
+              <b>Front-end</b> JavaScript, TypeScript, SolidJS, React, React Native,
             </panda.p>
-            <p><b>Backend</b> NodeJS, AstroJS, NextJS, Java, .NET</p>
+            <p><b>Back-end</b> NodeJS, AstroJS, NextJS, Java, .NET</p>
           </panda.div>
 
           <panda.div marginTop="5">
@@ -108,7 +110,7 @@ import richWithCam from "../assets/images/rich-with-cam.jpg";
             <panda.p marginTop="2" fontWeight="bold">
               Bachelor Computer Science
             </panda.p>
-            <p>NHL Stenden University of Applied Sciences</p>
+            <p>NHL Stenden</p>
             <p>2015 - 2019</p>
 
             <panda.p marginTop="2" fontWeight="bold">
@@ -195,11 +197,11 @@ import richWithCam from "../assets/images/rich-with-cam.jpg";
                     of business logic
                   </li>
                   <li>
-                    Worked closely with the designers to implement new design
+                    Worked closely with designers to implement new design
                     features into the site and app
                   </li>
                   <li>
-                    Implementing (interactive) features in the app, ensuring
+                    Implemented (interactive) features in their app, ensuring
                     feature parity between IOS and Android
                   </li>
                 </panda.ul>
@@ -208,9 +210,8 @@ import richWithCam from "../assets/images/rich-with-cam.jpg";
 
             <panda.div position="relative" marginTop="4">
               <panda.p fontWeight="bold">
-                Team Rockstars IT <panda.small fontWeight="light">
-                  Agency
-                </panda.small>
+                Team Rockstars IT
+                <panda.small fontWeight="light">Agency</panda.small>
               </panda.p>
               <panda.p position="absolute" top="0" right="0">
                 februari 2020 - october 2022
@@ -232,7 +233,8 @@ import richWithCam from "../assets/images/rich-with-cam.jpg";
               borderBottom="1px solid"
             >
               <panda.p fontWeight="bold">
-                DEGIRO <panda.small fontWeight="light">
+                DEGIRO
+                <panda.small fontWeight="light">
                   via Team Rockstars IT
                 </panda.small>
               </panda.p>
@@ -242,14 +244,14 @@ import richWithCam from "../assets/images/rich-with-cam.jpg";
               <div>
                 <panda.ul listStyle="square">
                   <li>
-                    Influenced the design and implementation choices for the new
-                    front end stack and CI/CD pipeline
+                    Influenced many design and implementation choices of the new
+                    front-end stack and CI/CD pipeline
                   </li>
                   <li>
-                    Worked on several frontends projects that where crucial for
+                    Worked on several front-ends projects that where crucial for
                     the RISK department
                   </li>
-                  <li>Helped implementing several microservices in Java</li>
+                  <li>Implemented a handful of microservices in Java</li>
                 </panda.ul>
               </div>
             </panda.div>
@@ -267,7 +269,7 @@ import richWithCam from "../assets/images/rich-with-cam.jpg";
               <div>
                 <panda.ul listStyle="square">
                   <li>
-                    Researched internal teams needs to having a BDD testing
+                    Researched internal teams needs for having a BDD testing
                     framework
                   </li>
                   <li>
@@ -292,7 +294,7 @@ import richWithCam from "../assets/images/rich-with-cam.jpg";
               <div>
                 <panda.ul listStyle="square">
                   <li>
-                    Transitioned their existing Python-based backend to the
+                    Transitioned their existing Python-based back-end to the
                     latest .NET framework, enabling the use of Entity Framework
                     for data modeling and typed queries, as well as the use of
                     Identity Server for user management and authentication
@@ -312,7 +314,7 @@ import richWithCam from "../assets/images/rich-with-cam.jpg";
       font-size: unset;
 
       @media print {
-        font-size: 14px;
+        font-size: 14px !important;
       }
     }
 

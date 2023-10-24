@@ -1,8 +1,8 @@
 import { timeline, type Easing, stagger } from "motion";
 import { Show, createSignal, createUniqueId, onMount } from "solid-js";
-import { Flex, panda } from "../../styled-system/jsx";
-import { Container } from "./ui/Container";
-import { css } from "../../styled-system/css";
+import { css } from "styled-system/css";
+import { Flex, panda } from "styled-system/jsx";
+import { Container } from "../ui/Container";
 
 const easeInQuart = [0.895, 0.03, 0.685, 0.22] as Easing;
 const easeOutQuart = [0.215, 0.61, 0.355, 1] as Easing;
