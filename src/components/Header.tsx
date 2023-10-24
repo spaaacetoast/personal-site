@@ -134,8 +134,15 @@ export const Header = () => {
             >
               CONTACT
             </panda.a>
+            <panda.a
+              ref={headerLinks[2]}
+              href="/resume"
+              transitionDelay="0.45s"
+            >
+              RESUME
+            </panda.a>
 
-            <panda.button position="absolute" right="0" transitionDelay="0.3s">
+            <panda.button position="absolute" right="0" transitionDelay="0.45s">
               • MENU
             </panda.button>
           </Flex>
