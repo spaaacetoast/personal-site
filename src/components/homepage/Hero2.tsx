@@ -1,10 +1,9 @@
 import richWithCamWide from "@assets/images/rich-with-cam-wide.jpg";
 import { animate, scroll } from "motion";
 import { onMount } from "solid-js";
-import { easeOutExpo } from "src/constants/easing";
 import { Flex, panda } from "styled-system/jsx";
 
-const initialPositionAnimation = "translateY(max(-200px, -10vw))";
+const initialPositionAnimation = "translateY(max(-200px, -25vw)) translateZ(0)";
 
 export const Hero = () => {
   let wrapper: HTMLDivElement;
@@ -14,7 +13,10 @@ export const Hero = () => {
   onMount(() => {
     scroll(
       animate(image, {
-        transform: [initialPositionAnimation, "translateY(min(25vh,20vw))"],
+        transform: [
+          initialPositionAnimation,
+          "translateY(min(25vh,25vw)) translateZ(0)",
+        ],
       }),
       {
         target: wrapper,
@@ -22,20 +24,12 @@ export const Hero = () => {
       }
     );
 
-    animate(
-      wrapper,
-      {
-        opacity: [0, 1],
-      },
-      {
-        easing: easeOutExpo,
-        duration: 1,
-      }
-    );
-
     scroll(
       animate(text, {
-        transform: ["translateY(0vh)", "translateY(50vh)"],
+        transform: [
+          "translateY(0vh) translateZ(0)",
+          "translateY(125%) translateZ(0)",
+        ],
       }),
       {
         target: wrapper,
@@ -49,14 +43,13 @@ export const Hero = () => {
       ref={wrapper!}
       flexDirection="column"
       justifyContent="center"
-      padding="4"
       overflow="hidden"
     >
       <panda.div
         ref={text!}
-        paddingTop="15vw"
-        paddingBottom="2vw"
-        textAlign="right"
+        paddingTop="40vh"
+        paddingBottom={{ base: "30vh", md: "10" }}
+        textAlign={{ base: "center", md: "right" }}
       >
         <panda.p fontSize="6vw" fontWeight="black" color="gray.500">
           Full Stack Developer

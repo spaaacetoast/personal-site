@@ -1,15 +1,14 @@
 import Lenis from "@studio-freight/lenis";
 import "@styles/lenis.css";
 import { onMount } from "solid-js";
+import { lenis } from "src/constants/lenis";
 
-// silly hack to get lenis to work with astro
+// initializing lenis in astro + bun makes the server crash. so lets initialize it in solidjs
 
 export const SmoothScroll = () => {
   onMount(() => {
-    const lenis = new Lenis();
-
     function raf(time: DOMHighResTimeStamp) {
-      lenis.raf(time);
+      lenis?.raf(time);
       requestAnimationFrame(raf);
     }
 
