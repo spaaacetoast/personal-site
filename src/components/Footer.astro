@@ -39,62 +39,30 @@ import { WideContainer } from "./ui/WideContainer";
       flexDirection="column"
       gap="4"
       padding="4"
+      css={{
+        "& a": {
+          paddingY: "4",
+          paddingX: "8",
+          borderWidth: "thin",
+          borderColor: "zinc.100",
+          borderStyle: "solid",
+          rounded: "full",
+          transitionDuration: "0.1s",
+          textAlign: "center",
+          _hover: {
+            backgroundColor: "zinc.100",
+            color: "zinc.900",
+            scale: "1.1",
+          },
+        },
+      }}
     >
       <panda.h1 fontSize="clamp(3rem, 20vw, 8rem)">Let's chat!</panda.h1>
-      <panda.a
-        href="mailto:obscuresoftware@proton.me"
-        paddingY="4"
-        paddingX="8"
-        borderWidth="thin"
-        borderColor="zinc.100"
-        borderStyle="solid"
-        rounded="full"
-        transitionDuration="0.1s"
-        textAlign="center"
-        _hover={{
-          backgroundColor: "zinc.100",
-          color: "zinc.900",
-          scale: "1.1",
-        }}
-      >
+      <panda.a href="mailto:obscuresoftware@proton.me">
         obscuresoftware@proton.me
       </panda.a>
-      <panda.a
-        href="tel:+31637327422"
-        paddingY="4"
-        paddingX="8"
-        borderWidth="thin"
-        borderColor="zinc.100"
-        borderStyle="solid"
-        rounded="full"
-        transitionDuration="0.1s"
-        textAlign="center"
-        _hover={{
-          backgroundColor: "zinc.100",
-          color: "zinc.900",
-          scale: "1.1",
-        }}
-      >
-        +31 6 37 32 74 22
-      </panda.a>
-      <panda.a
-        href="/resume"
-        paddingY="4"
-        paddingX="8"
-        borderWidth="thin"
-        borderColor="zinc.100"
-        borderStyle="solid"
-        rounded="full"
-        transitionDuration="0.1s"
-        textAlign="center"
-        _hover={{
-          backgroundColor: "zinc.100",
-          color: "zinc.900",
-          scale: "1.1",
-        }}
-      >
-        Resume ( Print to PDF )
-      </panda.a>
+      <panda.a href="tel:+31637327422">+31 6 37 32 74 22</panda.a>
+      <panda.a href="/resume">Resume ( Print to PDF )</panda.a>
     </Flex>
     <WideContainer>
       <Flex
