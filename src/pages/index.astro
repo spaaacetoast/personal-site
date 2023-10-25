@@ -1,19 +1,18 @@
 ---
 import { Footer } from "@components/Footer";
 import { Header } from "@components/Header";
-import { SmoothScroll } from "@components/SmoothScroll";
+import { SmoothScroll } from "@components/ui/SmoothScroll";
 import AboutMe from "@components/homepage/AboutMe.astro";
-import { Hero } from "@components/homepage/Hero2";
-import { Container } from "@components/ui/Container";
+import { Hero } from "@components/homepage/Hero";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import Experience from "@components/homepage/Experience.astro";
 ---
 
 <BaseLayout>
   <Header client:load />
-  <Container>
-    <Hero client:load />
-    <AboutMe />
-  </Container>
+  <Hero client:load />
+  <AboutMe />
+  <Experience />
   <Footer client:idle />
 </BaseLayout>
 

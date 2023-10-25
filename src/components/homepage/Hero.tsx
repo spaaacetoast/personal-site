@@ -1,182 +1,86 @@
-import { timeline, type Easing, stagger } from "motion";
-import { Show, createSignal, createUniqueId, onMount } from "solid-js";
-import { css } from "styled-system/css";
+import richWithCamWide from "@assets/images/rich-with-cam-wide.jpg";
+import { WideContainer } from "@components/ui/WideContainer";
+import { animate, scroll } from "motion";
+import { onMount } from "solid-js";
 import { Flex, panda } from "styled-system/jsx";
-import { Container } from "../ui/Container";
 
-const easeInQuart = [0.895, 0.03, 0.685, 0.22] as Easing;
-const easeOutQuart = [0.215, 0.61, 0.355, 1] as Easing;
-const easeOutCubic = [0.32, 0, 0.67, 0] as Easing;
-const easeInOutCubic = [0.65, 0, 0.35, 1] as Easing;
-const easeInOutQuart = [0.76, 0, 0.24, 1] as Easing;
+const initialPositionAnimation = "translateY(max(-200px, -25vw)) translateZ(0)";
 
 export const Hero = () => {
-  let pageIds = Array.from({ length: 2 }, () => createUniqueId());
-  let progressBar: SVGLineElement;
+  let wrapper: HTMLDivElement;
+  let image: HTMLImageElement;
+  let text: HTMLDivElement;
 
-  let [currentPage, setCurrentPage] = createSignal(0);
-
-  onMount(async () => {
-    const play = async () => {
-      const animation = timeline([
-        //intro
-        [
-          `#${pageIds[currentPage()]} span`,
-          {
-            transform: ["translateX(4rem)", "translateX(0%)"],
-            opacity: [0, 1],
-          },
-          { duration: 0.75, easing: easeOutQuart, delay: stagger(0.1) },
+  onMount(() => {
+    scroll(
+      animate(image, {
+        transform: [
+          initialPositionAnimation,
+          "translateY(min(25vh,25vw)) translateZ(0)",
         ],
+      }),
+      {
+        target: wrapper,
+        offset: [`${-wrapper.offsetTop}px`, "end start"],
+      }
+    );
 
-        [
-          progressBar,
-          {
-            opacity: 1,
-          },
-          {
-            duration: 1,
-            easing: easeInOutCubic,
-            at: "<",
-          },
+    scroll(
+      animate(text, {
+        transform: [
+          "translateY(0vh) translateZ(0)",
+          "translateY(125%) translateZ(0)",
         ],
-        [
-          progressBar,
-          {
-            strokeDashoffset: [1, 0],
-            transform: ["translateX(0%)", "translateX(0%)"],
-          },
-          {
-            duration: 6,
-            easing: easeInOutCubic,
-            at: "<",
-          },
-        ],
-
-        // outro
-        [
-          progressBar,
-          {
-            opacity: [1, 0, 1, 0, 1, 0],
-          },
-          {
-            duration: 0.5,
-            easing: easeInOutQuart,
-          },
-        ],
-        [
-          `#${pageIds[currentPage()]} span`,
-          {
-            transform: "translateX(-1rem)",
-            opacity: 0,
-          },
-          {
-            duration: 0.5,
-            easing: easeOutCubic,
-            delay: stagger(0.1),
-            at: "<",
-          },
-        ],
-      ]);
-
-      await animation.finished;
-
-      setCurrentPage((currentPage) => (currentPage + 1) % 2);
-    };
-
-    while (true) {
-      await play();
-    }
+      }),
+      {
+        target: wrapper,
+        offset: [`${-wrapper.offsetTop}px`, "end start"],
+      }
+    );
   });
 
   return (
-    <Flex flexDirection="column" minHeight="min(calc(100vh - 9rem), 50rem)">
+    <WideContainer>
       <Flex
-        flexGrow={1}
+        ref={wrapper!}
         flexDirection="column"
         justifyContent="center"
-        lineHeight={1.2}
-        fontSize="9vw"
-        md={{ fontSize: "min(6vw, 112.5px)" }}
         overflow="hidden"
-        class={css({
-          "& span": {
-            display: "inline-block",
-            transition: "all 0.5s",
-            opacity: 0,
-          },
-          "& span:hover": {
-            fontWeight: 600,
-          },
-        })}
       >
-        <Container>
-          <Show when={currentPage() === 0}>
-            <panda.div id={pageIds[0]}>
-              <panda.div fontWeight={200}>
-                <span>Hi!</span> <span>I am</span>{" "}
-                <panda.span fontWeight={900}>Richard Boomsma</panda.span>
-              </panda.div>
-              <panda.div fontWeight={400}>
-                <span>Creative</span>{" "}
-                <panda.span fontWeight={800}>web</panda.span>{" "}
-                <span>developer</span>
-              </panda.div>
-            </panda.div>
-            {/* <Image src={} /> */}
-          </Show>
-
-          <Show when={currentPage() === 1}>
-            <panda.div id={pageIds[1]}>
-              <panda.div fontWeight={800}>
-                <span>Eat,</span> <span>Sleep,</span> <span>Code, </span>{" "}
-                <span>Repeat.</span>
-              </panda.div>
-            </panda.div>
-          </Show>
-        </Container>
-      </Flex>
-      <Container>
-        <Flex
-          width="100%"
-          justifyContent="space-between"
-          alignItems="center"
-          gap={10}
-          fontSize="0.9rem"
-          fontFamily="noto-mono"
-          letterSpacing={-1.5}
+        <panda.div
+          ref={text!}
+          paddingTop="40vh"
+          paddingBottom={{ base: "30vh", md: "10" }}
+          textAlign={{ base: "center", md: "right" }}
         >
-          <div>{currentPage() === 0 ? "01" : "02"}</div>
-          <panda.svg
-            flexGrow={1}
-            height="2px"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
-            <panda.line
-              x1="0"
-              y1="0"
-              x2="100"
-              y2="0"
-              stroke="gray.300"
-              stroke-width="100"
-            />
-            <panda.line
-              x1="0"
-              y1="0"
-              x2="100"
-              y2="0"
-              stroke="gray.900"
-              stroke-width="100"
-              stroke-dasharray="1"
-              stroke-dashoffset="1"
-              pathLength="1"
-              ref={progressBar!}
-            />
-          </panda.svg>
-          <div>{currentPage() === 0 ? "02" : "01"}</div>
-        </Flex>
-      </Container>
-    </Flex>
+          <panda.p fontSize="6vw" fontWeight="black" color="gray.500">
+            Full Stack Developer
+          </panda.p>
+          <panda.p fontSize="9vw" fontWeight="black" lineHeight="0.6">
+            Richard Boomsma
+          </panda.p>
+        </panda.div>
+        <panda.div
+          overflow="hidden"
+          rounded="3xl"
+          position="relative"
+          _before={{
+            content: "''",
+            display: "block",
+            paddingTop: "calc(min(max(50%, 60vh), 100vh))",
+          }}
+        >
+          <panda.img
+            ref={image!}
+            src={richWithCamWide.src}
+            position="absolute"
+            top="-5vw"
+            objectFit="cover"
+            minHeight="80vh"
+            transform={initialPositionAnimation}
+          ></panda.img>
+        </panda.div>
+      </Flex>
+    </WideContainer>
   );
 };
