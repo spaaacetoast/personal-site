@@ -22,4 +22,14 @@ import { panda } from "styled-system/jsx";
       font-size: clamp(16px, 1.2vw, 19px);
     }
   </style>
+
+  <script>
+    // https://developer.chrome.com/blog/history-api-scroll-restoration/
+    // Because of the bug in the header where the menu button is not visible if scroll restoration is enabled, lets disable it.
+
+    if ("scrollRestoration" in history) {
+      // Back off, browser, I got this...
+      history.scrollRestoration = "manual";
+    }
+  </script>
 </html>
