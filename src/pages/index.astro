@@ -1,19 +1,19 @@
 ---
-import { Footer } from "@components/Footer";
+import Footer from "@components/Footer.astro";
 import { Header } from "@components/Header";
 import { SmoothScroll } from "@components/ui/SmoothScroll";
 import AboutMe from "@components/homepage/AboutMe.astro";
-import { Hero } from "@components/homepage/Hero";
+import Hero from "@components/homepage/Hero.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Experience from "@components/homepage/Experience.astro";
 ---
 
 <BaseLayout>
   <Header client:load />
-  <Hero client:load />
+  <Hero />
   <AboutMe />
   <Experience />
-  <Footer client:idle />
+  <Footer />
 </BaseLayout>
 
 <SmoothScroll client:only="solid-js" />

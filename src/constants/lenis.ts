@@ -8,5 +8,3 @@ export const lenis = isServer
       lerp: 0.1,
       easing: easeInOutCubic,
     });
-
-console.log(lenis);

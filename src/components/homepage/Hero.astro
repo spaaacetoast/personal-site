@@ -1,0 +1,85 @@
+---
+import richWithCamWide from "@assets/images/rich-with-cam-wide.jpg";
+import { WideContainer } from "@components/ui/WideContainer";
+import { Flex, panda } from "styled-system/jsx";
+
+const initialPositionAnimation = "translateY(max(-200px, -25vw)) translateZ(0)";
+---
+
+<WideContainer>
+  <Flex
+    id="hero.wrapper"
+    flexDirection="column"
+    justifyContent="center"
+    overflow="hidden"
+  >
+    <panda.div
+      id="hero.text"
+      paddingTop="40vh"
+      paddingBottom={{ base: "30vh", md: "10" }}
+      textAlign={{ base: "center", md: "right" }}
+    >
+      <panda.p fontSize="6vw" fontWeight="black" color="gray.500">
+        Full Stack Developer
+      </panda.p>
+      <panda.p fontSize="9vw" fontWeight="black" lineHeight="0.6">
+        Richard Boomsma
+      </panda.p>
+    </panda.div>
+    <panda.div
+      overflow="hidden"
+      rounded="3xl"
+      position="relative"
+      _before={{
+        content: "''",
+        display: "block",
+        paddingTop: "calc(min(max(50%, 60vh), 100vh))",
+      }}
+    >
+      <panda.img
+        id="hero.image"
+        src={richWithCamWide.src}
+        position="absolute"
+        top="-5vw"
+        objectFit="cover"
+        minHeight="80vh"
+        transform={initialPositionAnimation}
+      />
+    </panda.div>
+  </Flex>
+</WideContainer>
+);
+
+<script>
+  import { animate, scroll } from "motion";
+
+  let wrapper: HTMLElement = document.getElementById("hero.wrapper")!;
+  let image: HTMLElement = document.getElementById("hero.image")!;
+  let text: HTMLElement = document.getElementById("hero.text")!;
+
+  scroll(
+    animate(image, {
+      transform: [
+        "translateY(max(-200px, -25vw)) translateZ(0)",
+        "translateY(min(25vh,25vw)) translateZ(0)",
+      ],
+    }),
+    {
+      target: wrapper,
+      offset: [`${-wrapper.offsetTop}px`, "end start"],
+    }
+  );
+
+  scroll(
+    animate(text, {
+      transform: [
+        "translateY(0vh) translateZ(0)",
+        "translateY(125%) translateZ(0)",
+      ],
+    }),
+    {
+      target: wrapper,
+      offset: [`${-wrapper.offsetTop}px`, "end start"],
+    }
+  );
+</script>

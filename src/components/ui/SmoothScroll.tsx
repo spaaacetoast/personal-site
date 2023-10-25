@@ -1,4 +1,3 @@
-import Lenis from "@studio-freight/lenis";
 import "@styles/lenis.css";
 import { onMount } from "solid-js";
 import { lenis } from "src/constants/lenis";

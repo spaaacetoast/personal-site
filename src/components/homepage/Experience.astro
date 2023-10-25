@@ -132,11 +132,14 @@ const experiences: Experience[] = [
                   marginBottom="10"
                   transition="all 0.2s ease-in-out"
                   rounded="3xl"
+                  outlineColor="transparent"
                   _hover={{
                     backgroundColor: "zinc.100",
                     rounded: "xl",
                     shadow: "0 12.5px 25px -6px rgb(0 0 0 / 0.1)",
                     transform: "translateY(-4px)",
+                    outline: "1px solid",
+                    outlineColor: "zinc.200",
                   }}
                 >
                   <panda.div>
@@ -179,10 +182,12 @@ const experiences: Experience[] = [
                           <panda.div
                             paddingY="1"
                             paddingX="3"
-                            borderRadius="full"
                             backgroundColor="zinc.50"
                             fontSize="sm"
                             color="zinc.400"
+                            borderRadius="full"
+                            border="1px solid"
+                            borderColor="zinc.200"
                           >
                             {skill}
                           </panda.div>
