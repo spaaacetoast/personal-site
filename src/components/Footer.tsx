@@ -1,7 +1,7 @@
 import { ScrollOffset, animate, scroll } from "motion";
 import { onMount } from "solid-js";
 import { Flex, panda } from "styled-system/jsx";
-import { Container } from "./ui/Container";
+import { WideContainer } from "./ui/WideContainer";
 
 export const Footer = () => {
   let wrapper: HTMLDivElement;
@@ -24,7 +24,7 @@ export const Footer = () => {
 
     scroll(
       animate(bulge, {
-        height: ["20vw", "5vw"],
+        height: ["8vw", "3vw"],
       }),
       {
         target: wrapper,
@@ -49,7 +49,7 @@ export const Footer = () => {
           zIndex="1"
         >
           <panda.div
-            width="300%"
+            width="150%"
             content=""
             display="block"
             position="absolute"
@@ -59,6 +59,7 @@ export const Footer = () => {
             borderRadius="50%"
             transform="translate(-50%, -86.666%)"
             zIndex="1"
+            shadow="0 25px 50px -12px rgb(0 0 0 / 0.5)"
           />
         </panda.div>
         <Flex
@@ -66,7 +67,7 @@ export const Footer = () => {
           paddingTop="20vh"
           paddingBottom="10"
           marginBottom="-10"
-          backgroundColor="slate.900"
+          backgroundColor="zinc.800"
           color="gray.200"
           flexDirection="column"
         >
@@ -79,16 +80,17 @@ export const Footer = () => {
             <panda.h1 fontSize="clamp(3rem, 20vw, 8rem)">Let's chat!</panda.h1>
             <panda.a
               href="mailto:obscuresoftware@proton.me"
-              padding="4"
+              paddingY="4"
+              paddingX="8"
               borderWidth="thin"
-              borderColor="slate.100"
+              borderColor="zinc.100"
               borderStyle="solid"
               rounded="full"
               transitionDuration="0.1s"
               textAlign="center"
               _hover={{
-                backgroundColor: "slate.100",
-                color: "slate.900",
+                backgroundColor: "zinc.100",
+                color: "zinc.900",
                 scale: "1.1",
               }}
             >
@@ -96,33 +98,52 @@ export const Footer = () => {
             </panda.a>
             <panda.a
               href="tel:+31637327422"
-              padding="4"
+              paddingY="4"
+              paddingX="8"
               borderWidth="thin"
-              borderColor="slate.100"
+              borderColor="zinc.100"
               borderStyle="solid"
               rounded="full"
               transitionDuration="0.1s"
               textAlign="center"
               _hover={{
-                backgroundColor: "slate.100",
-                color: "slate.900",
+                backgroundColor: "zinc.100",
+                color: "zinc.900",
                 scale: "1.1",
               }}
             >
               +31 6 37 32 74 22
             </panda.a>
+            <panda.a
+              href="/resume"
+              paddingY="4"
+              paddingX="8"
+              borderWidth="thin"
+              borderColor="zinc.100"
+              borderStyle="solid"
+              rounded="full"
+              transitionDuration="0.1s"
+              textAlign="center"
+              _hover={{
+                backgroundColor: "zinc.100",
+                color: "zinc.900",
+                scale: "1.1",
+              }}
+            >
+              Resume ( Print to PDF )
+            </panda.a>
           </Flex>
-          <Container>
+          <WideContainer>
             <Flex
               justifyContent="space-between"
-              paddingTop="20vh"
+              paddingTop="15vh"
               paddingBottom="8"
               flexDirection={{ base: "column-reverse", md: "row" }}
               gap="4"
             >
               <panda.div
                 alignSelf={{ base: "center", md: "end" }}
-                color="slate.500"
+                color="zinc.500"
               >
                 2023 - Richard Boomsma - Obscure Software
               </panda.div>
@@ -143,10 +164,13 @@ export const Footer = () => {
                   <panda.a href="https://linkedin.com/in/richard-boomsma">
                     Linkedin
                   </panda.a>
+                  <panda.a href="https://github.com/spaaacetoast">
+                    GitHub
+                  </panda.a>
                 </Flex>
               </Flex>
             </Flex>
-          </Container>
+          </WideContainer>
         </Flex>
       </panda.footer>
     </>

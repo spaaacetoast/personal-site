@@ -1,13 +1,70 @@
 ---
-import { Container, panda } from "styled-system/jsx";
+import { WideContainer } from "@components/ui/WideContainer";
+import { css } from "styled-system/css";
+import { Container, Flex, panda } from "styled-system/jsx";
 ---
 
-<Container>
+<WideContainer>
   <panda.div id="about" paddingY={12} marginTop={12} borderTop="1px solid">
-    <panda.h3 fontFamily="noto-mono" fontSize="6xl">ABOUT ME</panda.h3>
-    <panda.div paddingTop={12} fontSize="2xl">
-      Full stack developer with a passion for creative web and app designs,
-      interactive experiences and scalable infrastructure behind the scenes.
-    </panda.div>
+    <Container maxWidth="3xl">
+      <Flex
+        flexDirection="column"
+        gap="4"
+        color="zinc.600"
+        class={css({
+          "& a": {
+            display: "inline-block",
+            color: "zinc.900",
+            textDecoration: "underline",
+            "&:hover": {
+              color: "green.600",
+            },
+          },
+        })}
+      >
+        <panda.p paddingTop={12}>
+          <panda.span
+            fontSize="clamp(2rem, 5vw, 4rem)"
+            fontWeight={600}
+            lineHeight="0"
+            color="zinc.800"
+          >
+            I'm a
+          </panda.span>
+          full-stack developer with a passion for crafting creative web and app designs,
+          creating interactive user experiences, and architecting the scalable infrastructure
+          that powers it all.
+        </panda.p>
+
+        <panda.p>
+          Back in 2010, I decided to make a game mixing all kinds of elements
+          from some of my favorite titles. I started learning how to code,
+          learning how to tinker and create all kinds of things (games, apps,
+          websites, robots, iot and an electric skateboard). I've been hooked
+          ever since.
+        </panda.p>
+
+        <panda.p>
+          I have a strong background in web development, with a focus on
+          TypeScript, React and Node.js. On the side I try to keep up with the
+          latest trends in the industry. For example this site is built using
+          <a href="https://astro.build/">Astro</a> for static site generation,
+          <a href="https://panda-css.com/">PandaCSS</a> for type-safe styling,
+          <a href="https://www.solidjs.com/">Solidjs</a> for interactive components,
+          built with
+          <a href="https://bun.sh/">Bun</a> for a fast javascript runtime, and it's
+          hosted on <a href="https://pages.github.com/">Github Pages</a>.
+        </panda.p>
+
+        <panda.p>
+          When I'm not behind the computer, I enjoy riding and working on my
+          motorcycle, volunteering at
+          <a href="https://www.de-sering.org/nl"> De Sering</a>, or spending my
+          time as a climate activist at <a
+            href="https://extinctionrebellion.nl/">Extinction Rebellion</a
+          >.
+        </panda.p>
+      </Flex>
+    </Container>
   </panda.div>
-</Container>
+</WideContainer>

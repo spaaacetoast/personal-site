@@ -1,0 +1,201 @@
+---
+import { WideContainer } from "@components/ui/WideContainer";
+import { Container, Flex, Grid, panda } from "styled-system/jsx";
+
+type Experience = {
+  name: string;
+  description: string;
+  subtitle?: string;
+  bulletPoints?: string[];
+  skills?: string[];
+  period: string;
+  url?: string;
+};
+
+const experiences: Experience[] = [
+  {
+    name: "Frank Energie",
+    description:
+      "Frank Energie is a Dutch energy supplier that offers green energy at dynamic prices.",
+    bulletPoints: [
+      "Implemented internationalization into the site, enabling per-language and per-country features, as well as seperation of business logic",
+      "Worked closely with designers to implement new design features into the site and app",
+      "Implemented (interactive) features in their app, ensuring feature parity between IOS and Android",
+    ],
+    skills: [
+      "React",
+      "React Native",
+      "Next.js",
+      "TypeScript",
+      "GraphQL",
+      "Node.js",
+    ],
+    period: "october 2022 - june 2023",
+    url: "https://frankenergie.nl",
+  },
+  {
+    name: "Team Rockstars IT",
+    description:
+      "Team Rockstars IT is a Dutch IT consultancy company that offers IT professionals to companies.",
+    subtitle: "Agency",
+    bulletPoints: [
+      "Was part of an amazing community of developers, sharing knowledge and experiences ",
+    ],
+    period: "februari 2020 - october 2022",
+    url: "https://teamrockstars.nl",
+  },
+  {
+    name: "DEGIRO",
+    description:
+      "DEGIRO is a Dutch online broker that offers retail and professional investors access to global financial markets.",
+    subtitle: "via Team Rockstars IT",
+    bulletPoints: [
+      "Influenced many design and implementation choices of the new front-end stack and CI/CD pipeline",
+      "Worked on several front-ends projects that where crucial for the RISK department",
+      "Implemented a handful of microservices in Java",
+    ],
+    period: "april 2020 - july 2022",
+    url: "https://degiro.nl",
+    skills: [
+      "React",
+      "TypeScript",
+      "Kafka",
+      "Java",
+      "Spring Boot",
+      "Microservices",
+    ],
+  },
+  {
+    name: "ING",
+    description:
+      "ING is a Dutch multinational banking and financial services corporation.",
+    subtitle: "Internship",
+    bulletPoints: [
+      "Researched internal teams needs for having a BDD testing framework",
+      "Developed a loosely coupled and modular testing framework on top of Cucumber, allowing users to create test cases for API's using building blocks",
+    ],
+    period: "april 2019 - december 2019",
+    url: "https://ing.nl",
+    skills: ["Java", "Spring Boot", "Cucumber"],
+  },
+  {
+    name: "Sancus I",
+    description:
+      "Sancus I was a Dutch startup creating a platform for low and easy access to the cryptocurrency market.",
+    period: "may 2018 - november 2018",
+    bulletPoints: [
+      "Transitioned their existing Python-based back-end to the latest .NET framework, enabling the use of Entity Framework for data modeling and typed queries, as well as the use of Identity Server for user management and authentication",
+      "Configured the CI/CD pipeline in Azure",
+    ],
+    skills: [".NET", "IdentityServer", "Entity Framework", "Razor Pages"],
+  },
+];
+---
+
+<WideContainer>
+  <panda.div id="experience" paddingY={12} marginTop={12} borderTop="1px solid">
+    <Container maxWidth="3xl">
+      <Flex flexDirection="column" gap="4" color="zinc.600">
+        <panda.p paddingTop={12}>
+          <panda.span
+            fontSize="clamp(2rem, 5vw, 4rem)"
+            fontWeight={600}
+            lineHeight="0.75"
+            color="zinc.900"
+          >
+            Over the years,
+          </panda.span>
+          I've worked with several companies and clients, from small startups to
+          large corporations. Building products and services from high fidelity web
+          apps for internal teams to consumer facing websites and mobile apps.
+        </panda.p>
+
+        <Grid
+          marginTop="4"
+          gridTemplateColumns={{ base: "1fr", md: "auto 1fr" }}
+          rowGap="0"
+          columnGap="2"
+        >
+          {
+            experiences.map((experience) => (
+              <>
+                <panda.p
+                  color="zinc.500"
+                  textAlign={{ base: "unset", md: "right" }}
+                  fontSize={{ base: "sm", md: "md" }}
+                  marginTop="4"
+                >
+                  {experience.period}
+                </panda.p>
+                <panda.div
+                  padding={{ md: "4" }}
+                  marginBottom="10"
+                  transition="all 0.2s ease-in-out"
+                  rounded="3xl"
+                  _hover={{
+                    backgroundColor: "zinc.100",
+                    rounded: "xl",
+                    shadow: "0 12.5px 25px -6px rgb(0 0 0 / 0.1)",
+                    transform: "translateY(-4px)",
+                  }}
+                >
+                  <panda.div>
+                    <panda.a
+                      href={experience.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      fontSize="lg"
+                      fontWeight="bold"
+                    >
+                      {experience.name}
+                      <panda.small fontWeight="lighter">
+                        &#129125; {experience.subtitle}
+                      </panda.small>
+                    </panda.a>
+
+                    <panda.p color="zinc.500">{experience.description}</panda.p>
+
+                    {experience.bulletPoints && (
+                      <panda.ul
+                        paddingLeft="4"
+                        listStyle="square"
+                        marginTop="4"
+                      >
+                        {experience.bulletPoints.map((bulletPoint) => (
+                          <panda.li
+                            fontSize="sm"
+                            fontWeight="light"
+                            color="zinc.500"
+                          >
+                            {bulletPoint}
+                          </panda.li>
+                        ))}
+                      </panda.ul>
+                    )}
+
+                    {experience.skills && (
+                      <Flex flexWrap="wrap" gap="2" marginTop="4">
+                        {experience.skills.map((skill) => (
+                          <panda.div
+                            paddingY="1"
+                            paddingX="3"
+                            borderRadius="full"
+                            backgroundColor="zinc.50"
+                            fontSize="sm"
+                            color="zinc.400"
+                          >
+                            {skill}
+                          </panda.div>
+                        ))}
+                      </Flex>
+                    )}
+                  </panda.div>
+                </panda.div>
+              </>
+            ))
+          }
+        </Grid>
+      </Flex>
+    </Container>
+  </panda.div>
+</WideContainer>

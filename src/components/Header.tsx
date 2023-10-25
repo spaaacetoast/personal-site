@@ -3,28 +3,24 @@ import { isServer } from "solid-js/web";
 import { lenis } from "src/constants/lenis";
 import { css } from "styled-system/css";
 import { Flex, panda } from "styled-system/jsx";
-import { Container } from "./ui/Container";
+import { WideContainer } from "./ui/WideContainer";
 
 const topThreshold = 100;
 const isMobile = () => window.innerWidth < 768;
 
 export const Header = () => {
-  const [isCompacted, setCompacted] = createSignal(true);
+  const [isAtTop, setAtTop] = createSignal(false);
   let headerLinks: HTMLAnchorElement[] = Array.from({ length: 3 });
 
   onMount(() => {
     if (!isServer) {
-      setCompacted(
-        document.documentElement.scrollTop > topThreshold || isMobile()
-      );
-
-      if (isMobile()) return;
+      setAtTop(document.documentElement.scrollTop < topThreshold);
 
       window.onscroll = () => {
         var currentPosition = document.documentElement.scrollTop;
-        const atTop = currentPosition > topThreshold;
-        if (isCompacted() !== atTop) {
-          setCompacted(atTop);
+        const atTop = currentPosition < topThreshold;
+        if (isAtTop() !== atTop) {
+          setAtTop(atTop);
         }
       };
     }
@@ -32,7 +28,7 @@ export const Header = () => {
 
   return (
     <panda.div position="fixed" zIndex={10} width="100%">
-      <Container>
+      <WideContainer>
         <Flex
           justifyContent="space-between"
           alignItems="center"
@@ -54,9 +50,7 @@ export const Header = () => {
                 display="inline-block"
                 overflow="hidden"
                 transform={
-                  !isServer && isCompacted()
-                    ? "translateY(-50%)"
-                    : "translateY(0%)"
+                  !isServer && isAtTop() ? "translateY(0%)" : "translateY(-50%)"
                 }
                 transition="transform"
                 transitionTimingFunction="cubic-bezier(.86,0,.07,1)"
@@ -70,9 +64,9 @@ export const Header = () => {
                 <panda.div
                   display="inline-block"
                   transform={
-                    !isServer && isCompacted()
-                      ? "translateY(110%)"
-                      : "translateY(0%)"
+                    !isServer && isAtTop()
+                      ? "translateY(0%)"
+                      : "translateY(110%)"
                   }
                   transition="transform"
                   transitionTimingFunction="cubic-bezier(.86,0,.07,1)"
@@ -95,18 +89,16 @@ export const Header = () => {
                 visibility: { base: "hidden", md: "visible" },
                 transition: "all",
                 transitionDuration: "1s",
-                transform: isCompacted()
-                  ? `translateY(-150%)`
-                  : `translateY(0%)`,
+                transform: isAtTop() ? `translateY(0%)` : `translateY(-150%)`,
                 transitionTimingFunction: "cubic-bezier(.86,0,.07,1)",
               },
               "& > button": {
                 transition: "all",
                 transitionDuration: "1s",
                 transform:
-                  !isServer && isCompacted()
-                    ? `translateY(0%)`
-                    : `translateY(150%)`,
+                  isServer || (isAtTop() && !isMobile())
+                    ? `translateY(150%)`
+                    : `translateY(0%)`,
                 transitionTimingFunction: "cubic-bezier(.86,0,.07,1)",
               },
             })}
@@ -147,7 +139,7 @@ export const Header = () => {
             </panda.button>
           </Flex>
         </Flex>
-      </Container>
+      </WideContainer>
     </panda.div>
   );
 };
