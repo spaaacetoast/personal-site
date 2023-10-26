@@ -24,7 +24,10 @@ import { Container, Flex, panda } from "styled-system/jsx";
         },
       })}
     >
-      <p>
+      <panda.p position="relative">
+        <panda.div position="absolute" top="0" transform="translateY(50%)">
+          (they/them)
+        </panda.div>
         <panda.span
           fontSize="clamp(2rem, 5vw, 4rem)"
           fontWeight={600}
@@ -36,7 +39,7 @@ import { Container, Flex, panda } from "styled-system/jsx";
         full-stack developer with a passion for crafting creative web and app designs,
         creating interactive user experiences, and architecting the scalable infrastructure
         that powers it all.
-      </p>
+      </panda.p>
 
       <p>
         Back in 2010, I decided to make a game mixing all kinds of elements from
