@@ -15,8 +15,8 @@ const initialPositionAnimation = "translateY(max(-200px, -25vw)) translateZ(0)";
   >
     <panda.div
       id="hero.text"
-      paddingTop="40vh"
-      paddingBottom={{ base: "30vh", md: "10" }}
+      paddingTop={{ base: "30vh", md: "40vh" }}
+      paddingBottom={{ base: "20vh", md: "10" }}
       textAlign={{ base: "center", md: "right" }}
     >
       <panda.p fontSize="6vw" fontWeight="black" color="gray.500">
@@ -74,7 +74,7 @@ const initialPositionAnimation = "translateY(max(-200px, -25vw)) translateZ(0)";
     animate(text, {
       transform: [
         "translateY(0vh) translateZ(0)",
-        "translateY(125%) translateZ(0)",
+        "translateY(30vw) translateZ(0)",
       ],
     }),
     {
