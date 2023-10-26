@@ -7,6 +7,5 @@ export const lenis = isServer
   : new Lenis({
       lerp: 0.1,
       easing: easeInOutCubic,
-      smoothTouch: true,
       syncTouch: true,
     });
