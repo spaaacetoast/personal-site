@@ -43,7 +43,7 @@ export const Header = () => {
               display="flex"
               fontSize="3rem"
               fontWeight={800}
-              letterSpacing="-0.2rem"
+              letterSpacing="-0.35rem"
               marginTop="-1"
               href="#"
               onclick={() => lenis?.scrollTo(0, { lerp: 0 })}

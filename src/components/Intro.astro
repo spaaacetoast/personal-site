@@ -1,0 +1,138 @@
+---
+import { Flex, panda } from "styled-system/jsx";
+---
+
+<Flex
+  id="intro"
+  position="fixed"
+  top="0"
+  left="0"
+  width="100%"
+  height="100%"
+  fontSize="clamp(2rem, 10vw, 5rem)"
+  alignItems="center"
+  justifyContent="center"
+  color="slate.200"
+  backgroundColor="slate.800"
+  zIndex={9999}
+>
+  <panda.div
+    id="intro.bulge"
+    position="absolute"
+    width="100%"
+    bottom="0"
+    zIndex={-1}
+    height="20vh"
+  >
+    <panda.div
+      width="150%"
+      content=""
+      display="block"
+      position="absolute"
+      backgroundColor="slate.800"
+      height="750%"
+      left="50%"
+      borderRadius="50%"
+      transform="translate(-50%, -72%)"
+      zIndex="1"
+      shadow="0 25px 50px -12px rgb(0 0 0 / 0.5)"
+    />
+  </panda.div>
+  <div id="intro.text">Hi!</div>
+</Flex>
+
+<script>
+  import { animate } from "motion";
+  import { easeInOutExpo } from "src/constants/easing";
+  import type { CssProperties } from "styled-system/types";
+
+  const intro = document.getElementById("intro")!;
+  const bulge = document.getElementById("intro.bulge")!;
+  const text = document.getElementById("intro.text")!;
+
+  const textStages = [
+    "XXX",
+    "scure",
+    "ObscurE",
+    "Boomsma",
+    "Richard",
+    "Richard Boomsma",
+    "obscure",
+  ];
+  const textStyles: CssProperties[] = [
+    {
+      fontWeight: 800,
+      border: "1px solid white",
+      padding: "0.5rem 10rem",
+    },
+    {
+      fontWeight: 300,
+      color: "black",
+      backgroundColor: "white",
+      padding: "2rem 5rem",
+    },
+    {
+      color: "white",
+      fontWeight: 600,
+      border: "10px solid white",
+      backgroundColor: "black",
+    },
+    {
+      fontWeight: 100,
+      border: "",
+      padding: "0.5rem",
+      backgroundColor: "transparent",
+    },
+    {
+      fontWeight: 900,
+      letterSpacing: "2rem",
+    },
+    {
+      fontWeight: 600,
+      letterSpacing: "-0.5rem",
+      color: "unset",
+      backgroundColor: "unset",
+      border: "0px",
+    },
+    {
+      fontWeight: 800,
+      letterSpacing: "-0.5rem",
+      color: "unset",
+      backgroundColor: "unset",
+      border: "0px",
+    },
+  ];
+
+  setTimeout(() => {
+    textStages.forEach((t, i) => {
+      setTimeout(() => {
+        text.innerHTML = t;
+        Object.assign(text.style, textStyles[i % textStyles.length]);
+      }, 300 * i);
+    });
+  }, 1000);
+
+  setTimeout(() => {
+    animate(
+      intro,
+      {
+        transform: "translateY(-100%)",
+      },
+      {
+        duration: 1,
+        easing: easeInOutExpo,
+      }
+    );
+
+    animate(
+      bulge,
+      {
+        height: "0vh",
+      },
+      {
+        duration: 1,
+        easing: easeInOutExpo,
+      }
+    );
+  }, 3250);
+</script>

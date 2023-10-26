@@ -6,9 +6,11 @@ import AboutMe from "@components/homepage/AboutMe.astro";
 import Hero from "@components/homepage/Hero.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Experience from "@components/homepage/Experience.astro";
+import Intro from "@components/Intro.astro";
 ---
 
 <BaseLayout>
+  <Intro />
   <Header client:load />
   <Hero />
   <AboutMe />
