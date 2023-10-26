@@ -53,7 +53,7 @@ export const HeaderMenu = (props: Props) => {
           position="absolute"
           top="0"
           right="min(4vw, 4rem)"
-          paddingTop="12"
+          marginTop="12"
           color="slate.200"
           onclick={props.onClose}
           cursor="pointer"
