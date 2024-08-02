@@ -14,19 +14,24 @@ export const HeaderMenu = (props: Props) => {
       right="0"
       left={{ base: "0", md: "unset" }}
       height="100vh"
-      transform={
-        props.isOpen ? "translateX(0%)" : "translateX(calc(100% + 6vw))"
-      }
       transition="all .85s cubic-bezier(.7, 0, .2, 1)"
+      style={{
+        transform: props.isOpen
+          ? "translateX(0%)"
+          : "translateX(calc(100% + 6vw))",
+      }}
     >
       <panda.div
         position="absolute"
-        width={props.isOpen ? "1vw" : "6vw"}
         height="100%"
         top="0"
         left="0"
         zIndex={-1}
         transition="all .85s cubic-bezier(.7, 0, .2, 1)"
+
+        style={{
+          width: props.isOpen ? "1vw" : "6vw",
+        }}
       >
         <panda.div
           height="150%"

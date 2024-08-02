@@ -1,10 +1,14 @@
-import { splitProps, mergeProps } from 'solid-js'
+import { createMemo, mergeProps, splitProps } from 'solid-js'
 import { createComponent } from 'solid-js/web'
-import { panda } from './factory.mjs';
-import { getSpacerStyle } from '../patterns/spacer.mjs';
 
-export function Spacer(props) {
-  const [patternProps, restProps] = splitProps(props, ["size"]);
-const styleProps = getSpacerStyle(patternProps)
-return createComponent(panda.div, mergeProps(styleProps, restProps))
+import { getSpacerStyle } from '../patterns/spacer.mjs';
+import { panda } from './factory.mjs';
+
+export const Spacer = /* @__PURE__ */ function Spacer(props) {
+  const [patternProps, restProps] = splitProps(props, ["size"])
+
+const styleProps = getSpacerStyle(patternProps)        
+const mergedProps = mergeProps(styleProps, restProps)
+
+return createComponent(panda.div, mergedProps)
 }

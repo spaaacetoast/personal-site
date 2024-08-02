@@ -11,17 +11,17 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^3.0.1",
-    "@fontsource-variable/noto-sans-mono": "^5.0.13",
-    "@fontsource-variable/nunito-sans": "^5.0.9",
-    "@studio-freight/lenis": "^1.0.27",
-    "astro": "^3.1.4",
-    "motion": "^10.16.4",
-    "solid-js": "^1.4.3"
+    "@astrojs/solid-js": "^4.4.0",
+    "@fontsource-variable/noto-sans-mono": "^5.0.20",
+    "@fontsource-variable/nunito-sans": "^5.0.14",
+    "@studio-freight/lenis": "^1.0.42",
+    "astro": "^4.13.0",
+    "motion": "^10.18.0",
+    "solid-js": "^1.8.19"
   },
   "devDependencies": {
-    "@pandacss/astro": "^0.15.1",
-    "@pandacss/dev": "^0.15.1",
-    "bun-types": "^1.0.3"
+    "@pandacss/astro": "^0.25.0",
+    "@pandacss/dev": "^0.41.0",
+    "bun-types": "^1.1.21"
   }
 }

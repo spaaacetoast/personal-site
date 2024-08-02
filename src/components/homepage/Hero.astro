@@ -1,7 +1,7 @@
 ---
-import richWithCamWide from "@assets/images/rich-with-cam-wide.jpg";
+import richWithCam from "@assets/images/rich-with-cam.jpg";
 import { WideContainer } from "@components/ui/WideContainer";
-import { Flex, panda } from "styled-system/jsx";
+import { Box, Flex, panda } from "styled-system/jsx";
 
 const initialPositionAnimation = "translateY(max(-200px, -25vw)) translateZ(0)";
 ---
@@ -13,7 +13,7 @@ const initialPositionAnimation = "translateY(max(-200px, -25vw)) translateZ(0)";
     justifyContent="center"
     overflow="hidden"
   >
-    <panda.div
+    <Box
       id="hero.text"
       paddingTop={{ base: "30vh", md: "40vh" }}
       paddingBottom={{ base: "20vh", md: "10" }}
@@ -25,8 +25,8 @@ const initialPositionAnimation = "translateY(max(-200px, -25vw)) translateZ(0)";
       <panda.p fontSize="9vw" fontWeight="black" lineHeight="0.6">
         Richard Boomsma
       </panda.p>
-    </panda.div>
-    <panda.div
+    </Box>
+    <Box
       overflow="hidden"
       rounded="3xl"
       position="relative"
@@ -38,14 +38,14 @@ const initialPositionAnimation = "translateY(max(-200px, -25vw)) translateZ(0)";
     >
       <panda.img
         id="hero.image"
-        src={richWithCamWide.src}
+        src={richWithCam.src}
         position="absolute"
-        top="-5vw"
+        top="-7vw"
         objectFit="cover"
         minHeight="80vh"
         transform={initialPositionAnimation}
       />
-    </panda.div>
+    </Box>
   </Flex>
 </WideContainer>
 

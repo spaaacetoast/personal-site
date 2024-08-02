@@ -1,6 +1,5 @@
 ---
 import { WideContainer } from "@components/ui/WideContainer";
-import { css } from "styled-system/css";
 import { Container, Flex, panda } from "styled-system/jsx";
 ---
 
@@ -10,7 +9,7 @@ import { Container, Flex, panda } from "styled-system/jsx";
       maxWidth="3xl"
       color="zinc.600"
       paddingTop="12"
-      class={css({
+      css={{
         "& a": {
           display: "inline-block",
           color: "zinc.900",
@@ -22,7 +21,7 @@ import { Container, Flex, panda } from "styled-system/jsx";
         "& p": {
           marginBottom: "6",
         },
-      })}
+      }}
     >
       <panda.p position="relative">
         <panda.div position="absolute" top="0" transform="translateY(50%)">

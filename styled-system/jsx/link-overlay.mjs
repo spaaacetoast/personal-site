@@ -1,9 +1,14 @@
-import { splitProps, mergeProps } from 'solid-js'
+import { createMemo, mergeProps, splitProps } from 'solid-js'
 import { createComponent } from 'solid-js/web'
-import { panda } from './factory.mjs';
-import { getLinkOverlayStyle } from '../patterns/link-overlay.mjs';
 
-export function LinkOverlay(props) {
-  const styleProps = getLinkOverlayStyle()
-return createComponent(panda.a, mergeProps(styleProps, props))
+import { getLinkOverlayStyle } from '../patterns/link-overlay.mjs';
+import { panda } from './factory.mjs';
+
+export const LinkOverlay = /* @__PURE__ */ function LinkOverlay(props) {
+  const [patternProps, restProps] = splitProps(props, [])
+
+const styleProps = getLinkOverlayStyle(patternProps)        
+const mergedProps = mergeProps(styleProps, restProps)
+
+return createComponent(panda.a, mergedProps)
 }

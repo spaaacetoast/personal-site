@@ -5,8 +5,9 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "verbatimModuleSyntax": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
+      "~/*": ["./src/*"],
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],

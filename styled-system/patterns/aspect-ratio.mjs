@@ -1,13 +1,13 @@
-import { mapObject } from '../helpers.mjs';
+import { getPatternStyles, patternFns } from '../helpers.mjs';
 import { css } from '../css/index.mjs';
 
 const aspectRatioConfig = {
 transform(props, { map }) {
-  const { ratio = 1.3333333333333333, ...rest } = props;
+  const { ratio = 4 / 3, ...rest } = props;
   return {
     position: "relative",
     _before: {
-      content: '""',
+      content: `""`,
       display: "block",
       height: "0",
       paddingBottom: map(ratio, (r) => `${1 / r * 100}%`)
@@ -29,7 +29,10 @@ transform(props, { map }) {
   };
 }}
 
-export const getAspectRatioStyle = (styles = {}) => aspectRatioConfig.transform(styles, { map: mapObject })
+export const getAspectRatioStyle = (styles = {}) => {
+  const _styles = getPatternStyles(aspectRatioConfig, styles)
+  return aspectRatioConfig.transform(_styles, patternFns)
+}
 
 export const aspectRatio = (styles) => css(getAspectRatioStyle(styles))
 aspectRatio.raw = getAspectRatioStyle

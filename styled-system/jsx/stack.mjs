@@ -1,10 +1,14 @@
-import { splitProps, mergeProps } from 'solid-js'
+import { createMemo, mergeProps, splitProps } from 'solid-js'
 import { createComponent } from 'solid-js/web'
-import { panda } from './factory.mjs';
-import { getStackStyle } from '../patterns/stack.mjs';
 
-export function Stack(props) {
-  const [patternProps, restProps] = splitProps(props, ["align", "justify", "direction", "gap"]);
-const styleProps = getStackStyle(patternProps)
-return createComponent(panda.div, mergeProps(styleProps, restProps))
+import { getStackStyle } from '../patterns/stack.mjs';
+import { panda } from './factory.mjs';
+
+export const Stack = /* @__PURE__ */ function Stack(props) {
+  const [patternProps, restProps] = splitProps(props, ["align","justify","direction","gap"])
+
+const styleProps = getStackStyle(patternProps)        
+const mergedProps = mergeProps(styleProps, restProps)
+
+return createComponent(panda.div, mergedProps)
 }

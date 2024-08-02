@@ -1,46 +1,81 @@
-import { Dynamic } from 'solid-js/web'
 import { createMemo, mergeProps, splitProps } from 'solid-js'
-import { createComponent } from 'solid-js/web'
+import { Dynamic, createComponent } from 'solid-js/web'
 import { css, cx, cva } from '../css/index.mjs';
 import { normalizeHTMLProps } from '../helpers.mjs';
-import { isCssProperty, allCssProperties } from './is-valid-prop.mjs';
-
-const defaultShouldForwardProp = (prop, variantKeys) => !variantKeys.includes(prop) && !isCssProperty(prop)
+import { composeCvaFn, composeShouldForwardProps, defaultShouldForwardProp, getDisplayName } from './factory-helper.mjs';
+import { isCssProperty } from './is-valid-prop.mjs';
 
 function styledFn(element, configOrCva = {}, options = {}) {
-  const cvaFn = configOrCva.__cva__ || configOrCva.__recipe__ ? configOrCva : cva(configOrCva)
+  const cvaFn =
+    configOrCva.__cva__ || configOrCva.__recipe__
+      ? configOrCva
+      : cva(configOrCva)
 
   const forwardFn = options.shouldForwardProp || defaultShouldForwardProp
   const shouldForwardProp = (prop) => forwardFn(prop, cvaFn.variantKeys)
-  
+
   const defaultProps = Object.assign(
-    options.dataAttr && configOrCva.__name__ ? { 'data-recipe': configOrCva.__name__ } : {},
-    options.defaultProps,
+    options.dataAttr && configOrCva.__name__
+      ? { 'data-recipe': configOrCva.__name__ }
+      : {},
+    options.defaultProps
   )
 
-  return function PandaComponent(props) {
-    const mergedProps = mergeProps({ as: element }, defaultProps, props)
-    const forwardedKeys = createMemo(() => Object.keys(props).filter(shouldForwardProp))
+  const __cvaFn__ = composeCvaFn(element.__cva__, cvaFn)
+  const __shouldForwardProps__ = composeShouldForwardProps(
+    element,
+    shouldForwardProp
+  )
 
-    const [localProps, forwardedProps, variantProps, styleProps, htmlProps, elementProps] = splitProps(
-      mergedProps,
-      ['as', 'class', 'className'],
-      forwardedKeys(),
-      cvaFn.variantKeys,
-      allCssProperties,
-      normalizeHTMLProps.keys
+  const PandaComponent = (props) => {
+    const mergedProps = mergeProps(
+      { as: element.__base__ || element },
+      defaultProps,
+      props
     )
+
+    const [localProps, restProps] = splitProps(mergedProps, [
+      'as',
+      'class',
+      'className',
+    ])
+
+    const [htmlProps, aProps] = splitProps(restProps, normalizeHTMLProps.keys)
+
+    const forwardedKeys = createMemo(() => {
+      const keys = Object.keys(aProps)
+      return keys.filter((prop) => __shouldForwardProps__(prop))
+    })
+
+    const [forwardedProps, variantProps, bProps] = splitProps(aProps, forwardedKeys(), __cvaFn__.variantKeys)
+
+    const cssPropKeys = createMemo(() => {
+      const keys = Object.keys(bProps)
+      return keys.filter((prop) => isCssProperty(prop))
+    })
+
+    const [styleProps, elementProps] = splitProps(bProps, cssPropKeys())
 
     function recipeClass() {
       const { css: cssStyles, ...propStyles } = styleProps
-      const compoundVariantStyles = cvaFn.__getCompoundVariantCss__?.(variantProps);
-      return cx(cvaFn(variantProps, false), css(compoundVariantStyles, propStyles, cssStyles), localProps.class, localProps.className)
+      const compoundVariantStyles =
+        __cvaFn__.__getCompoundVariantCss__?.(variantProps)
+      return cx(
+        __cvaFn__(variantProps, false),
+        css(compoundVariantStyles, propStyles, cssStyles),
+        localProps.class,
+        localProps.className
+      )
     }
 
     function cvaClass() {
       const { css: cssStyles, ...propStyles } = styleProps
-      const cvaStyles = cvaFn.raw(variantProps)
-      return cx(css(cvaStyles, propStyles, cssStyles), localProps.class, localProps.className)
+      const cvaStyles = __cvaFn__.raw(variantProps)
+      return cx(
+        css(cvaStyles, propStyles, cssStyles),
+        localProps.class,
+        localProps.className
+      )
     }
 
     const classes = configOrCva.__recipe__ ? recipeClass : cvaClass
@@ -51,21 +86,25 @@ function styledFn(element, configOrCva = {}, options = {}) {
 
     return createComponent(
       Dynamic,
-      mergeProps(
-        forwardedProps,
-        elementProps,
-        normalizeHTMLProps(htmlProps),
-        {
-          get component() {
-            return localProps.as
-          },
-          get class() {
-            return classes()
-          }
+      mergeProps(forwardedProps, elementProps, normalizeHTMLProps(htmlProps), {
+        get component() {
+          return localProps.as
         },
-      )
+        get class() {
+          return classes()
+        },
+      })
     )
   }
+
+  const name = getDisplayName(element)
+
+  PandaComponent.displayName = `panda.${name}`
+  PandaComponent.__cva__ = __cvaFn__
+  PandaComponent.__base__ = element
+  PandaComponent.__shouldForwardProps__ = shouldForwardProp
+
+  return PandaComponent
 }
 
 function createJsxFactory() {

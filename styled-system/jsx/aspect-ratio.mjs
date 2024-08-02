@@ -1,10 +1,14 @@
-import { splitProps, mergeProps } from 'solid-js'
+import { createMemo, mergeProps, splitProps } from 'solid-js'
 import { createComponent } from 'solid-js/web'
-import { panda } from './factory.mjs';
-import { getAspectRatioStyle } from '../patterns/aspect-ratio.mjs';
 
-export function AspectRatio(props) {
-  const [patternProps, restProps] = splitProps(props, ["ratio"]);
-const styleProps = getAspectRatioStyle(patternProps)
-return createComponent(panda.div, mergeProps(styleProps, restProps))
+import { getAspectRatioStyle } from '../patterns/aspect-ratio.mjs';
+import { panda } from './factory.mjs';
+
+export const AspectRatio = /* @__PURE__ */ function AspectRatio(props) {
+  const [patternProps, restProps] = splitProps(props, ["ratio"])
+
+const styleProps = getAspectRatioStyle(patternProps)        
+const mergedProps = mergeProps(styleProps, restProps)
+
+return createComponent(panda.div, mergedProps)
 }

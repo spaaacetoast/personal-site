@@ -1,4 +1,4 @@
-import { createSignal, onMount } from "solid-js";
+import { createSignal, For, onMount } from "solid-js";
 import { isServer } from "solid-js/web";
 import { lenis } from "src/constants/lenis";
 import { Flex, panda } from "styled-system/jsx";
@@ -11,14 +11,14 @@ const isMobile = () => window.innerWidth < 768;
 export const Header = () => {
   const [isAtTop, setAtTop] = createSignal(false);
   const [isMenuOpen, setMenuOpen] = createSignal(false);
-  let headerLinks: HTMLAnchorElement[] = Array.from({ length: 3 });
+  const headerLinks: HTMLAnchorElement[] = Array.from({ length: 3 });
 
   onMount(() => {
     if (!isServer) {
       setAtTop(document.documentElement.scrollTop < topThreshold);
 
       window.onscroll = () => {
-        var currentPosition = document.documentElement.scrollTop;
+        const currentPosition = document.documentElement.scrollTop;
         const atTop = currentPosition < topThreshold;
 
         if (isAtTop() !== atTop) {
@@ -49,42 +49,43 @@ export const Header = () => {
               onclick={() => lenis?.scrollTo(0, { lerp: 0 })}
             >
               <panda.div display="inline-block">o</panda.div>
-              {["b", "s", "c", "u", "r", "e"].map((letter, i) => (
-                <panda.div
-                  display="inline-block"
-                  overflow="hidden"
-                  transform={
-                    !isServer && isAtTop()
-                      ? "translateY(0%)"
-                      : "translateY(-50%)"
-                  }
-                  transition="transform"
-                  transitionTimingFunction="cubic-bezier(.86,0,.07,1)"
-                  transitionDuration="1s"
-                  style={{
-                    "transition-delay": `${i * 0.05}s`,
-                  }}
-                  paddingRight="2"
-                  marginRight="-2"
-                >
+              <For each={
+                ["b", "s", "c", "u", "r", "e"]
+              }>
+                {(letter, i) =>
                   <panda.div
                     display="inline-block"
-                    transform={
-                      !isServer && isAtTop()
-                        ? "translateY(0%)"
-                        : "translateY(110%)"
-                    }
+                    overflow="hidden"
                     transition="transform"
                     transitionTimingFunction="cubic-bezier(.86,0,.07,1)"
                     transitionDuration="1s"
                     style={{
-                      "transition-delay": `${i * 0.05}s`,
+                      "transition-delay": `${i() * 0.05}s`,
+                      transform: !isServer && isAtTop()
+                        ? "translateY(0%)"
+                        : "translateY(-50%)"
                     }}
+                    paddingRight="2"
+                    marginRight="-2"
                   >
-                    {letter}
-                  </panda.div>
-                </panda.div>
-              ))}
+                    <panda.div
+                      display="inline-block"
+                      transform={
+                        !isServer && isAtTop()
+                          ? "translateY(0%)"
+                          : "translateY(110%)"
+                      }
+                      transition="transform"
+                      transitionTimingFunction="cubic-bezier(.86,0,.07,1)"
+                      transitionDuration="1s"
+                      style={{
+                        "transition-delay": `${i() * 0.05}s`,
+                      }}
+                    >
+                      {letter}
+                    </panda.div>
+                  </panda.div>}
+              </For>
             </panda.a>
             <Flex
               gap={12}
@@ -95,7 +96,7 @@ export const Header = () => {
                   visibility: { base: "hidden", md: "visible" },
                   transition: "all",
                   transitionDuration: "1s",
-                  transform: isAtTop() ? `translateY(0%)` : `translateY(-150%)`,
+                  transform: isAtTop() ? "translateY(0%)" : "translateY(-150%)",
                   transitionTimingFunction: "cubic-bezier(.86,0,.07,1)",
                 },
                 "& > button": {
@@ -104,8 +105,8 @@ export const Header = () => {
                   transform:
                     // TODO: for some reason there is a bug where the menu button is not visible when the view position is recovered on reload
                     isServer || (isAtTop() && !isMobile())
-                      ? `translateY(150%)`
-                      : `translateY(0%)`, // This is than not applied while isAtTop() is false
+                      ? "translateY(150%)"
+                      : "translateY(0%)", // This is than not applied while isAtTop() is false
                   transitionTimingFunction: "cubic-bezier(.86,0,.07,1)",
                 },
               }}

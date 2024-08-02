@@ -1,11 +1,20 @@
-import { compact, splitProps } from '../helpers.mjs';
+import { compact, mergeProps, memo, splitProps, uniq } from '../helpers.mjs';
 import { css, mergeCss } from './css.mjs';
 
+const defaults = (conf) => ({
+  base: {},
+  variants: {},
+  defaultVariants: {},
+  compoundVariants: [],
+  ...conf,
+})
+
 export function cva(config) {
-  const { base = {}, variants = {}, defaultVariants = {}, compoundVariants = [] } = config
+  const { base, variants, defaultVariants, compoundVariants } = defaults(config)
+  const getVariantProps = (variants) => ({ ...defaultVariants, ...compact(variants) })
 
   function resolve(props = {}) {
-    const computedVariants = { ...defaultVariants, ...compact(props) }
+    const computedVariants = getVariantProps(props)
     let variantCss = { ...base }
     for (const [key, value] of Object.entries(computedVariants)) {
       if (variants[key]?.[value]) {
@@ -14,6 +23,19 @@ export function cva(config) {
     }
     const compoundVariantCss = getCompoundVariantCss(compoundVariants, computedVariants)
     return mergeCss(variantCss, compoundVariantCss)
+  }
+
+  function merge(__cva) {
+    const override = defaults(__cva.config)
+    const variantKeys = uniq(__cva.variantKeys, Object.keys(variants))
+    return cva({
+      base: mergeCss(base, override.base),
+      variants: Object.fromEntries(
+        variantKeys.map((key) => [key, mergeCss(variants[key], override.variants[key])]),
+      ),
+      defaultVariants: mergeProps(defaultVariants, override.defaultVariants),
+      compoundVariants: [...compoundVariants, ...override.compoundVariants],
+    })
   }
 
   function cvaFn(props) {
@@ -28,13 +50,15 @@ export function cva(config) {
 
   const variantMap = Object.fromEntries(Object.entries(variants).map(([key, value]) => [key, Object.keys(value)]))
 
-  return Object.assign(cvaFn, {
+  return Object.assign(memo(cvaFn), {
     __cva__: true,
     variantMap,
     variantKeys,
     raw: resolve,
     config,
+    merge,
     splitVariantProps,
+    getVariantProps
   })
 }
 
