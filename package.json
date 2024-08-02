@@ -20,7 +20,6 @@
     "solid-js": "^1.8.19"
   },
   "devDependencies": {
-    "@pandacss/astro": "^0.25.0",
     "@pandacss/dev": "^0.41.0",
     "bun-types": "^1.1.21"
   }
