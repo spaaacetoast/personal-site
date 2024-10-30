@@ -1,15 +1,18 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { VStack, panda, Flex } from "styled-system/jsx";
+import { VStack, panda, Flex, HStack, Divider } from "styled-system/jsx";
 import richWithCam from "@assets/images/rich-with-cam.jpg";
 ---
 
 <BaseLayout>
   <VStack
     width={{ base: "90%", _print: "100%" }}
+    height={{ base: "unset", _print: "50%" }}
     maxWidth={{ base: "1200px", _print: "unset" }}
-    marginY={{ base: "20", _print: "unset" }}
-    marginX={{ base: "auto", _print: "unset" }}
+    maxHeight={{ base: "unset", _print: "50%" }}
+    marginY={{ base: "20", _print: "0" }}
+    marginX={{ base: "auto", _print: "0" }}
+    overflow={{ base: "unset", _print: "hidden" }}
     gap="10"
   >
     <panda.div
@@ -28,7 +31,7 @@ import richWithCam from "@assets/images/rich-with-cam.jpg";
       </panda.p>
       <panda.p color="gray.500">
         Want this resume in PDF format and save on paper waste? Most modern OS
-        and browsers allow 'print to pdf'.
+        and browsers allow 'print to PDF'.
       </panda.p>
     </panda.div>
 
@@ -91,9 +94,25 @@ import richWithCam from "@assets/images/rich-with-cam.jpg";
             </panda.h2>
 
             <panda.p marginTop="2">
-              <b>Front-end</b> JavaScript, TypeScript, SolidJS, React, React Native,
+              <b>Languages</b>
+              <div>
+                TypeScript, Java, C#,
+                <panda.span textWrap="nowrap">Rust (learning)</panda.span>
+              </div>
             </panda.p>
-            <p><b>Back-end</b> NodeJS, AstroJS, NextJS, Java, .NET</p>
+
+            <panda.p marginTop="2">
+              <b>Front-end Frameworks</b>
+              <div>
+                SolidJS, React,
+                <panda.span textWrap="nowrap">React Native</panda.span>
+              </div>
+            </panda.p>
+
+            <panda.p marginTop="2">
+              <b>Back-end Frameworks</b>
+              <div>NodeJS, AstroJS, NextJS, .NET, Spring Boot</div>
+            </panda.p>
           </panda.div>
 
           <panda.div marginTop="5">
@@ -133,13 +152,13 @@ import richWithCam from "@assets/images/rich-with-cam.jpg";
             left="0"
             right="0"
             top="0"
-            height={{ base: "56", _print: "40" }}
+            height={{ base: "56", _print: "32" }}
             backgroundColor="gray.400"
             printColorAdjust="exact"
           />
 
           <panda.h1
-            marginTop={{ base: "24", _print: "12" }}
+            marginTop={{ base: "24", _print: "7" }}
             color="gray.100"
             fontSize={{ base: "6xl", _print: "5xl" }}
             fontWeight="100"
@@ -147,8 +166,13 @@ import richWithCam from "@assets/images/rich-with-cam.jpg";
             zIndex="1"
             printColorAdjust="exact"
             letterSpacing="5"
+            lineHeight={{ base: "unset", _print: "tight" }}
           >
-            RICHARD BOOMSMA
+            RICHARD
+            <panda.div
+              color="gray.700"
+              fontSize={{ base: "3xl", _print: "2xl" }}>BOOMSMA</panda.div
+            >
           </panda.h1>
 
           <panda.h2
@@ -170,14 +194,14 @@ import richWithCam from "@assets/images/rich-with-cam.jpg";
 
           <panda.p marginTop="2">
             Full stack developer with a passion for creative web and app
-            designs, interactive experiences and scalable infrastructure behind
-            the scenes.
+            designs, interactive experiences and scalable infrastructure that
+            powers it all.
           </panda.p>
 
           <panda.div marginTop="4">
             <panda.h3 fontSize="xl" fontWeight="600" borderBottom="1px solid">
               Work Experience <panda.small fontWeight="400">
-                4+ years experience
+                5+ years experience
               </panda.small>
             </panda.h3>
 
@@ -187,139 +211,178 @@ import richWithCam from "@assets/images/rich-with-cam.jpg";
               paddingBottom="4"
               borderBottom="1px solid"
             >
-              <panda.p fontWeight="bold">Frank Energie</panda.p>
+              <panda.p fontWeight="bold">Radical Builders</panda.p>
               <panda.p position="absolute" top="0" right="0">
-                october 2022 - june 2023
+                january 2024 - current
               </panda.p>
               <div>
                 <panda.ul listStyle="square">
                   <li>
-                    Implemented internationalization into the site, enabling
-                    per-language and per-country features, as well as seperation
-                    of business logic
+                    Designed and built an interactive frontend for
+                    remote-controlled vessels, displaying critical operational
+                    data for real-time monitoring and control.
                   </li>
                   <li>
-                    Worked closely with designers to implement new design
-                    features into the site and app
+                    Set up an onsite CI/CD pipeline for streamlined development
+                    and deployment, ensuring the latest software is always
+                    available.
                   </li>
                   <li>
-                    Implemented (interactive) features in their app, ensuring
-                    feature parity between IOS and Android
-                  </li>
-                </panda.ul>
-              </div>
-            </panda.div>
-
-            <panda.div position="relative" marginTop="4">
-              <panda.p fontWeight="bold">
-                Team Rockstars IT
-                <panda.small fontWeight="light">Agency</panda.small>
-              </panda.p>
-              <panda.p position="absolute" top="0" right="0">
-                februari 2020 - october 2022
-              </panda.p>
-              <div>
-                <panda.ul listStyle="square">
-                  <li>
-                    Was part of an amazing community of developers, sharing
-                    knowledge and experiences
-                  </li>
-                </panda.ul>
-              </div>
-            </panda.div>
-
-            <panda.div
-              position="relative"
-              paddingBottom="4"
-              marginTop="4"
-              borderBottom="1px solid"
-            >
-              <panda.p fontWeight="bold">
-                DEGIRO
-                <panda.small fontWeight="light">
-                  via Team Rockstars IT
-                </panda.small>
-              </panda.p>
-              <panda.p position="absolute" top="0" right="0">
-                april 2020 - july 2022
-              </panda.p>
-              <div>
-                <panda.ul listStyle="square">
-                  <li>
-                    Influenced many design and implementation choices of the new
-                    front-end stack and CI/CD pipeline
+                    Implemented secure VPN for reliable remote hardware access
                   </li>
                   <li>
-                    Worked on several front-end projects that where crucial for
-                    the RISK department
+                    Engineered multi-WAN failover to ensure continuous
+                    connectivity using Wi-Fi, 4G, and Starlink
                   </li>
-                  <li>Implemented a handful of microservices in Java</li>
-                </panda.ul>
-              </div>
-            </panda.div>
-
-            <panda.div
-              position="relative"
-              marginTop="4"
-              paddingBottom="4"
-              borderBottom="1px solid"
-            >
-              <panda.p><b>ING</b>{" "} <small>Internship</small></panda.p>
-              <panda.p position="absolute" top="0" right="0">
-                april 2019 - december 2019
-              </panda.p>
-              <div>
-                <panda.ul listStyle="square">
-                  <li>
-                    Researched internal teams needs for having a BDD testing
-                    framework
-                  </li>
-                  <li>
-                    Developed a loosely coupled and modular testing framework on
-                    top of Cucumber, allowing users to create test cases for
-                    API's using building blocks
-                  </li>
-                </panda.ul>
-              </div>
-            </panda.div>
-
-            <panda.div
-              position="relative"
-              marginTop="4"
-              paddingBottom="4"
-              borderBottom="1px solid"
-            >
-              <panda.p fontWeight="bold">Sancus I</panda.p>
-              <panda.p position="absolute" top="0" right="0">
-                may 2018 - november 2018
-              </panda.p>
-              <div>
-                <panda.ul listStyle="square">
-                  <li>
-                    Transitioned their existing Python-based back-end to the
-                    latest .NET framework, enabling the use of Entity Framework
-                    for data modeling and typed queries, as well as the use of
-                    Identity Server for user management and authentication
-                  </li>
-                  <li>Configured the CI/CD pipeline in Azure</li>
                 </panda.ul>
               </div>
             </panda.div>
           </panda.div>
+
+          <panda.div
+            position="relative"
+            marginTop="4"
+            paddingBottom="4"
+            borderBottom="1px solid"
+          >
+            <panda.p fontWeight="bold">Frank Energie</panda.p>
+            <panda.p position="absolute" top="0" right="0">
+              october 2022 - june 2023
+            </panda.p>
+            <div>
+              <panda.ul listStyle="square">
+                <li>
+                  Implemented internationalization on the site, enabling
+                  per-language and per-country features, and seperating business
+                  logic
+                </li>
+                <li>
+                  Worked closely with designers to implement new design features
+                  into the site and app
+                </li>
+                <li>
+                  Implemented interactive features in their app, ensuring
+                  feature parity between iOS and Android
+                </li>
+              </panda.ul>
+            </div>
+          </panda.div>
+
+          <panda.div position="relative" marginTop="4">
+            <panda.p fontWeight="bold">
+              Team Rockstars IT
+              <panda.small fontWeight="light">Agency</panda.small>
+            </panda.p>
+            <panda.p position="absolute" top="0" right="0">
+              februari 2020 - october 2022
+            </panda.p>
+            <div>
+              <panda.ul listStyle="square">
+                <li>
+                  Participated in an amazing community of developers, sharing
+                  knowledge and experiences
+                </li>
+              </panda.ul>
+            </div>
+          </panda.div>
+
+          <panda.div
+            position="relative"
+            paddingBottom="4"
+            marginTop="4"
+            borderBottom="1px solid"
+          >
+            <panda.p fontWeight="bold">
+              DEGIRO
+              <panda.small fontWeight="light">
+                via Team Rockstars IT
+              </panda.small>
+            </panda.p>
+            <panda.p position="absolute" top="0" right="0">
+              april 2020 - july 2022
+            </panda.p>
+            <div>
+              <panda.ul listStyle="square">
+                <li>
+                  Influenced many design and implementation choices of the new
+                  front-end stack and CI/CD pipeline
+                </li>
+                <li>
+                  Worked on several front-end projects that were crucial for the
+                  RISK department
+                </li>
+                <li>Implemented a handful of microservices in Java</li>
+              </panda.ul>
+            </div>
+          </panda.div>
+
+          <Flex gap={{ base: "8", _print: "4" }}>
+            <panda.div
+              position="relative"
+              marginTop="4"
+              paddingBottom="4"
+              borderBottom="1px solid"
+              flex="1 1 50%"
+            >
+              <panda.p><b>ING</b>{" "} <small>Internship</small></panda.p>
+              <panda.p position="absolute" top="0" right="0">
+                apr - dec 2019
+              </panda.p>
+              <div>
+                <panda.ul listStyle="square">
+                  <li>
+                    Developed a modular BDD testing framework using Cucumber,
+                    based on internal team needs
+                  </li>
+                </panda.ul>
+              </div>
+            </panda.div>
+
+            <panda.div
+              width="1px"
+              marginTop="4"
+              justifySelf="stretch"
+              borderRight="1px solid"
+              display={{ base: "block", _print: "none" }}
+            />
+
+            <panda.div
+              position="relative"
+              marginTop="4"
+              paddingBottom="4"
+              borderBottom="1px solid"
+              flex="1 1 50%"
+            >
+              <panda.p fontWeight="bold">Sancus I</panda.p>
+              <panda.p position="absolute" top="0" right="0">
+                may - nov 2018
+              </panda.p>
+              <div>
+                <panda.ul listStyle="square">
+                  <!-- <li>Transitioned back-end from Python to .NET</li>
+                    <li>Configured CI/CD pipeline in Azure</li> -->
+                  <li>
+                    Transitioned infrastructure from Python to Microsoft
+                    technologies (.NET and Azure)
+                  </li>
+                </panda.ul>
+              </div>
+            </panda.div>
+          </Flex>
         </Flex>
       </Flex>
     </panda.div>
   </VStack>
-
-  <style is:global>
-    html {
-      @media print {
-        font-size: 14px !important;
-      }
-    }
-
-    @page {
-      margin: 0;
-    }
-  </style>
 </BaseLayout>
+
+<style is:global>
+  html {
+    @media print {
+      font-size: 14px !important;
+    }
+  }
+
+  @page {
+    margin: 0;
+  }
+</style>
