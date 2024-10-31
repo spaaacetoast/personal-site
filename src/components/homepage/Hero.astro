@@ -19,7 +19,7 @@ const initialPositionAnimation = "translateY(max(-200px, -25vw)) translateZ(0)";
       paddingBottom={{ base: "20vh", md: "10" }}
       textAlign={{ base: "center", md: "right" }}
     >
-      <panda.p fontSize="6vw" fontWeight="black" color="gray.500">
+      <panda.p fontSize="6vw" fontWeight="black" color="gray.10">
         Full Stack Developer
       </panda.p>
       <panda.p fontSize="9vw" fontWeight="black" lineHeight="0.6">
@@ -66,7 +66,7 @@ const initialPositionAnimation = "translateY(max(-200px, -25vw)) translateZ(0)";
     {
       target: wrapper,
       offset: [`${-wrapper.offsetTop}px`, "end start"],
-    }
+    },
   );
 
   scroll(
@@ -79,6 +79,6 @@ const initialPositionAnimation = "translateY(max(-200px, -25vw)) translateZ(0)";
     {
       target: wrapper,
       offset: [`${-wrapper.offsetTop}px`, "end start"],
-    }
+    },
   );
 </script>

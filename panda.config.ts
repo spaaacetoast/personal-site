@@ -1,20 +1,21 @@
 import { defineConfig } from "@pandacss/dev";
 import { globalCss } from "./src/styles/global-styles";
+import { createPreset } from "@park-ui/panda-preset";
 
 export default defineConfig({
-	// Whether to use css reset
 	preflight: true,
-
-	// Where to look for your css declarations
-	include: [
-		"./src/**/*.{ts,tsx,js,jsx,astro}",
-		"./pages/**/*.{ts,tsx,js,jsx,astro}",
+	presets: [
+		"@pandacss/preset-base",
+		createPreset({
+			accentColor: "indigo",
+			grayColor: "sand",
+			borderRadius: "xl",
+			additionalColors: ["*"],
+		}),
 	],
 
-	// Files to exclude
-	exclude: [],
+	include: ["./src/**/*.{ts,tsx,js,jsx,astro}"],
 
-	// Useful for theme customization
 	theme: {
 		extend: {
 			tokens: {
@@ -28,7 +29,6 @@ export default defineConfig({
 
 	globalCss,
 
-	// The output directory for your css system
 	outdir: "styled-system",
 
 	jsxFramework: "solid",

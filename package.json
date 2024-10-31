@@ -11,16 +11,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^4.4.0",
-    "@fontsource-variable/noto-sans-mono": "^5.0.20",
-    "@fontsource-variable/nunito-sans": "^5.0.14",
+    "@ark-ui/solid": "^4.3.0",
+    "@astrojs/solid-js": "^4.4.2",
+    "@fontsource-variable/noto-sans-mono": "^5.1.0",
+    "@fontsource-variable/nunito-sans": "^5.1.0",
     "@studio-freight/lenis": "^1.0.42",
-    "astro": "^4.13.0",
+    "astro": "^4.16.8",
     "motion": "^10.18.0",
-    "solid-js": "^1.8.19"
+    "solid-js": "^1.9.3"
   },
   "devDependencies": {
     "@pandacss/dev": "^0.41.0",
-    "bun-types": "^1.1.21"
+    "@park-ui/panda-preset": "^0.42.0",
+    "bun-types": "^1.1.33"
   }
 }

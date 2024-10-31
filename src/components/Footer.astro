@@ -30,8 +30,8 @@ import { WideContainer } from "./ui/WideContainer";
     paddingTop="20vh"
     paddingBottom="10"
     marginBottom="-10"
-    backgroundColor="zinc.800"
-    color="gray.200"
+    backgroundColor="slate.12"
+    color="gray.2"
     flexDirection="column"
   >
     <Flex
@@ -44,16 +44,11 @@ import { WideContainer } from "./ui/WideContainer";
           paddingY: "4",
           paddingX: "8",
           borderWidth: "thin",
-          borderColor: "zinc.100",
+          borderColor: "gray.1",
           borderStyle: "solid",
           rounded: "full",
           transitionDuration: "0.1s",
           textAlign: "center",
-          _hover: {
-            backgroundColor: "zinc.100",
-            color: "zinc.900",
-            scale: "1.1",
-          },
         },
       }}
     >
@@ -72,16 +67,16 @@ import { WideContainer } from "./ui/WideContainer";
         flexDirection={{ base: "column-reverse", md: "row" }}
         gap="4"
       >
-        <panda.div alignSelf="end" color="zinc.500">
+        <panda.div alignSelf="end" color="gray.11">
           2023 - Richard Boomsma - Obscure Software
         </panda.div>
         <Flex
           flexDirection="column"
           paddingBottom="4"
           borderBottom={{ base: "1px solid", md: "none" }}
-          borderColor="gray.400"
+          borderColor="gray.11"
         >
-          <panda.div fontSize="sm" color="gray.400">Socials</panda.div>
+          <panda.div fontSize="sm" color="gray.12">Socials</panda.div>
           <Flex gap="10">
             <panda.a href="https://instagram.com/spaaacetoast/">
               Instagram
@@ -114,7 +109,7 @@ import { WideContainer } from "./ui/WideContainer";
     {
       target: wrapper,
       offset: [`start end`, "end"],
-    }
+    },
   );
 
   scroll(
@@ -124,6 +119,6 @@ import { WideContainer } from "./ui/WideContainer";
     {
       target: wrapper,
       offset: [`start end`, "end"],
-    }
+    },
   );
 </script>

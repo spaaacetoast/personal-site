@@ -1,5 +1,5 @@
 ---
-import { Box, Flex, panda } from "styled-system/jsx";
+import { Box, Flex } from "styled-system/jsx";
 ---
 
 <Flex
@@ -12,8 +12,10 @@ import { Box, Flex, panda } from "styled-system/jsx";
   fontSize="clamp(2rem, 10vw, 5rem)"
   alignItems="center"
   justifyContent="center"
-  color="slate.200"
-  backgroundColor="slate.800"
+
+  color="slate.5"
+  backgroundColor="slate.12"
+
   zIndex={9999}
 >
   <Box
@@ -29,7 +31,7 @@ import { Box, Flex, panda } from "styled-system/jsx";
       content=""
       display="block"
       position="absolute"
-      backgroundColor="slate.800"
+      backgroundColor="slate.12"
       height="750%"
       left="50%"
       borderRadius="50%"
@@ -123,7 +125,7 @@ import { Box, Flex, panda } from "styled-system/jsx";
       {
         duration: 1.5,
         easing: easeInOutExpo,
-      }
+      },
     );
 
     animate(
@@ -134,7 +136,7 @@ import { Box, Flex, panda } from "styled-system/jsx";
       {
         duration: 1.5,
         easing: easeInOutExpo,
-      }
+      },
     );
   }, 3500);
 </script>
