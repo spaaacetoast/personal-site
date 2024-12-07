@@ -3,124 +3,120 @@ import { WideContainer } from "@components/ui/WideContainer";
 import { Container, Flex, Grid, panda } from "styled-system/jsx";
 
 type Experience = {
-	name: string;
-	description: string;
-	subtitle?: string;
-	bulletPoints?: string[];
-	skills?: string[];
-	period: string;
-	url?: string;
+  name: string;
+  description: string;
+  subtitle?: string;
+  bulletPoints?: string[];
+  skills?: string[];
+  period: string;
+  url?: string;
 };
 
 const experiences: Experience[] = [
-	{
-		name: "Radical Builders",
-		description:
-			"Radical Builders is a company that designs and builds remote-controlled vessels.",
-		bulletPoints: [
-			"Designed and built an interactive frontend for remote-controlled vessels, displaying critical operational data for real-time monitoring and control.",
-			"Set up an onsite CI/CD pipeline for streamlined development and deployment, ensuring the latest software is always available.",
-			"Implemented secure VPN for reliable remote hardware access.",
-			"Engineered multi-WAN failover to ensure continuous connectivity using Wi-Fi, 4G, and Starlink.",
-		],
-		skills: [
-			"SolidJs",
-			"TypeScript",
-			"Bun.js",
-			"Docker",
-			"Linux",
-			"VPN",
-			"CI/CD",
-		],
-		period: "january 2024 - current",
-		url: "https://radical.builders/",
-	},
-	{
-		name: "Frank Energie",
-		description:
-			"Frank Energie is a Dutch energy supplier that offers green energy at dynamic prices.",
-		bulletPoints: [
-			"Implemented internationalization into the site, enabling per-language and per-country features, as well as seperation of business logic",
-			"Worked closely with designers to implement new design features into the site and app",
-			"Implemented (interactive) features in their app, ensuring feature parity between iOS and Android",
-		],
-		skills: [
-			"React",
-			"React Native",
-			"Next.js",
-			"TypeScript",
-			"GraphQL",
-			"Node.js",
-		],
-		period: "october 2022 - june 2023",
-		url: "https://frankenergie.nl",
-	},
-	{
-		name: "Team Rockstars IT",
-		description:
-			"Team Rockstars IT is a Dutch IT consultancy company that offers IT professionals to companies.",
-		subtitle: "Agency",
-		bulletPoints: [
-			"Was part of an amazing community of developers, sharing knowledge and experiences ",
-		],
-		period: "february 2020 - october 2022",
-		url: "https://teamrockstars.nl",
-	},
-	{
-		name: "DEGIRO",
-		description:
-			"DEGIRO is a Dutch online broker that offers retail and professional investors access to global financial markets.",
-		subtitle: "via Team Rockstars IT",
-		bulletPoints: [
-			"Influenced many design and implementation choices of the new front-end stack and CI/CD pipeline",
-			"Worked on several front-end projects that where crucial for the RISK department",
-			"Implemented a handful of microservices in Java",
-		],
-		period: "april 2020 - july 2022",
-		url: "https://degiro.nl",
-		skills: [
-			"React",
-			"TypeScript",
-			"Kafka",
-			"Java",
-			"Spring Boot",
-			"Microservices",
-		],
-	},
-	{
-		name: "ING",
-		description:
-			"ING is a Dutch multinational banking and financial services corporation.",
-		subtitle: "Internship",
-		bulletPoints: [
-			"Researched internal teams needs for having a BDD testing framework",
-			"Developed a loosely coupled and modular testing framework on top of Cucumber, allowing users to create test cases for API's using building blocks",
-		],
-		period: "april 2019 - december 2019",
-		url: "https://ing.nl",
-		skills: ["Java", "Spring Boot", "Cucumber"],
-	},
-	{
-		name: "Sancus I",
-		description:
-			"Sancus I was a Dutch startup creating a platform for low and easy access to the cryptocurrency market.",
-		period: "may 2018 - november 2018",
-		bulletPoints: [
-			"Transitioned their existing Python-based back-end to the latest .NET framework, enabling the use of Entity Framework for data modeling and typed queries, as well as the use of Identity Server for user management and authentication",
-			"Configured the CI/CD pipeline in Azure",
-		],
-		skills: [".NET", "IdentityServer", "Entity Framework", "Razor Pages"],
-	},
+  {
+    name: "Radical Builders",
+    description:
+      "Radical Builders is a company that designs and builds remote-controlled vessels.",
+    bulletPoints: [
+      "Designed and built an interactive frontend for remote-controlled vessels, displaying critical operational data for real-time monitoring and control.",
+      "Set up an onsite CI/CD pipeline for streamlined development and deployment, ensuring the latest software is always available.",
+      "Implemented secure VPN for reliable remote hardware access.",
+      "Engineered multi-WAN failover to ensure continuous connectivity using Wi-Fi, 4G, and Starlink.",
+    ],
+    skills: [
+      "SolidJs",
+      "TypeScript",
+      "Bun.js",
+      "Docker",
+      "Linux",
+      "VPN",
+      "CI/CD",
+    ],
+    period: "january 2024 - current",
+    url: "https://radical.builders/",
+  },
+  {
+    name: "Frank Energie",
+    description:
+      "Frank Energie is a Dutch energy supplier that offers green energy at dynamic prices.",
+    bulletPoints: [
+      "Implemented internationalization into the site, enabling per-language and per-country features, as well as seperation of business logic",
+      "Worked closely with designers to implement new design features into the site and app",
+      "Implemented (interactive) features in their app, ensuring feature parity between iOS and Android",
+    ],
+    skills: [
+      "React",
+      "React Native",
+      "Next.js",
+      "TypeScript",
+      "GraphQL",
+      "Node.js",
+    ],
+    period: "october 2022 - june 2023",
+    url: "https://frankenergie.nl",
+  },
+  {
+    name: "Team Rockstars IT",
+    description:
+      "Team Rockstars IT is a Dutch IT consultancy company that offers IT professionals to companies.",
+    subtitle: "Agency",
+    bulletPoints: [
+      "Was part of an amazing community of developers, sharing knowledge and experiences ",
+    ],
+    period: "february 2020 - october 2022",
+    url: "https://teamrockstars.nl",
+  },
+  {
+    name: "DEGIRO",
+    description:
+      "DEGIRO is a Dutch online broker that offers retail and professional investors access to global financial markets.",
+    subtitle: "via Team Rockstars IT",
+    bulletPoints: [
+      "Influenced many design and implementation choices of the new front-end stack and CI/CD pipeline",
+      "Worked on several front-end projects that where crucial for the RISK department",
+      "Implemented a handful of microservices in Java",
+    ],
+    period: "april 2020 - july 2022",
+    url: "https://degiro.nl",
+    skills: [
+      "React",
+      "TypeScript",
+      "RxJs",
+      "Java",
+      "Spring Boot",
+      "Kafka",
+      "Microservices",
+    ],
+  },
+  {
+    name: "ING",
+    description:
+      "ING is a Dutch multinational banking and financial services corporation.",
+    subtitle: "Internship",
+    bulletPoints: [
+      "Researched internal teams needs for having a BDD testing framework",
+      "Developed a loosely coupled and modular testing framework on top of Cucumber, allowing users to create test cases for API's using building blocks",
+    ],
+    period: "april 2019 - december 2019",
+    url: "https://ing.nl",
+    skills: ["Java", "Spring Boot", "Cucumber"],
+  },
+  {
+    name: "Sancus I",
+    description:
+      "Sancus I was a Dutch startup creating a platform for low and easy access to the cryptocurrency market.",
+    period: "may 2018 - november 2018",
+    bulletPoints: [
+      "Transitioned their existing Python-based back-end to the latest .NET framework, enabling the use of Entity Framework for data modeling and typed queries, as well as the use of Identity Server for user management and authentication",
+      "Configured the CI/CD pipeline in Azure",
+    ],
+    skills: [".NET", "IdentityServer", "Entity Framework", "Razor Pages"],
+  },
 ];
 ---
 
 <WideContainer>
-  <panda.div
-    id="experience"
-    paddingY={12}
-    marginTop={12}
-    borderTop="1px solid"
-  >
+  <panda.div id="experience" paddingY={12} marginTop={12} borderTop="1px solid">
     <Container maxWidth="3xl">
       <Flex flexDirection="column" gap="4" color="gray.11">
         <panda.p paddingTop={12}>
@@ -164,7 +160,7 @@ const experiences: Experience[] = [
                     backgroundColor: "gray.2",
                     rounded: "xl",
                     // shadow: "0 12.5px 25px -6px rgb(0 0 0 / 0.1)",
-                    shadow:"xl",
+                    shadow: "xl",
                     transform: "translateY(-4px)",
                     outline: "1px solid",
                     outlineColor: "gray.2",
@@ -185,9 +181,7 @@ const experiences: Experience[] = [
                       </panda.small>
                     </panda.a>
 
-                    <panda.p color="gray.11">
-                      {experience.description}
-                    </panda.p>
+                    <panda.p color="gray.11">{experience.description}</panda.p>
 
                     {experience.bulletPoints && (
                       <panda.ul
